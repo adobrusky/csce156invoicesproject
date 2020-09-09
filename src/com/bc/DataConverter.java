@@ -3,13 +3,13 @@ package com.bc;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 import java.util.Scanner;
 
 public class DataConverter {
-
-	public static void main(String[] args) {
+	
+	public static List<Person> parsePeople() {
+		//Scans info from Persons.dat and parses it into objects of people and returns a list of people
 		Scanner s = null;
     	try {
 			s = new Scanner(new File("data/Persons.dat"));
@@ -36,11 +36,17 @@ public class DataConverter {
     		if(tokens.length > 3) {
         		emails = tokens[3].split(",");
     		}
-
+    		
     		people.add(new Person(code, lastName, firstName, new Address(street, city, state, zip, country), emails));
     		
     	}
     	s.close();
+    	return people;
+	}
+
+	public static void main(String[] args) {
+		
+		List<Person> people = parsePeople();
     	
     	for(Person i : people) {
     		System.out.println(i);
