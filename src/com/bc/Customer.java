@@ -1,20 +1,18 @@
 package com.bc;
 
-import java.util.Arrays;
-
 public class Customer {
 	private String code;
 	private char type;
 	private String name;
 	private Person primaryContact;
-	private String[] emails;
+	private Address address;
 	
-	public Customer(String c, char t, String n, Person p, String[] e) {
+	public Customer(String c, char t, String n, Person p, Address a) {
 		setCode(c);
 		setType(t);
 		setName(n);
 		setPrimaryContact(p);
-		setEmails(e);
+		setAddress(a);
 	}
 	
 	public String getCode() {
@@ -49,17 +47,17 @@ public class Customer {
 		this.primaryContact = primaryContact;
 	}
 	
-	public String[] getEmails() {
-		return emails;
+	public Address getAddress() {
+		return address;
 	}
 	
-	public void setEmails(String[] emails) {
-		this.emails = emails;
+	public void setAddress(Address address) {
+		this.address = address;
 	}
 	
 	@Override
 	public String toString() {
 		return "Customer [code=" + code + ", type=" + type + ", name=" + name + ", primaryContact=" + primaryContact
-				+ ", emails=" + Arrays.toString(emails) + "]";
+				+ ", address=" + address + "]";
 	}
 }
