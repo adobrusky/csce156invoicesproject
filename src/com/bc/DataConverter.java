@@ -6,6 +6,9 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+
 public class DataConverter {
 	
 	public static Person findPrimaryContact(String code, List<Person> people) {
@@ -18,7 +21,7 @@ public class DataConverter {
 		return null;
 	}
 	
-	public static List<Person> parsePeople() {
+	public static List<Person> parsePersons() {
 		//Scans info from Persons.dat and parses it into objects of people and returns a list of people
 		Scanner s = null;
     	try {
@@ -140,26 +143,21 @@ public class DataConverter {
 	public static void main(String[] args) {
 		
 		//Creates a list of people from the Persons.dat
-		List<Person> people = parsePeople();
+		List<Person> persons = parsePersons();
 		
 		//Creates a list of customers from the Customers.dat
-		List<Customer> customers = parseCustomers(people);
+		List<Customer> customers = parseCustomers(persons);
 		
 		//Creates a list of products from the Products.dat
 		List<Product> products = parseProducts();
     	
-		//Following loops print the objects. Need to convert from printing them to outputting in json and or xml files
-    	for(Person i : people) {
-    		System.out.println(i);
-    	}
-    	
-    	for(Customer i : customers) {
-    		System.out.println(i);
-    	}
-    	
-    	for(Product i : products) {
-    		System.out.println(i);
-    	}
+//    	I got bored and figured out how to convert it to json. Its missing the persons that is at the top of 
+//		the example Persons.json output file
+//		idk if that is a problem or not
+		
+    	Gson gson = new GsonBuilder().setPrettyPrinting().create();
+    	String personJson = gson.toJson(persons);
+    	System.out.println(personJson);
 
 	}
 

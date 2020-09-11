@@ -4,9 +4,9 @@ import java.util.Arrays;
 
 public class Person {
 	private String code;
-	private String lastName;
 	private String firstName;
-	private Address address;
+	private String lastName;
+	private Address Address;
 	private String[] emails;
 	
 	public Person(String c, String l, String f, Address a, String[] e) {
@@ -42,11 +42,11 @@ public class Person {
 	}
 	
 	public Address getAddress() {
-		return address;
+		return Address;
 	}
 	
 	public void setAddress(Address address) {
-		this.address = address;
+		this.Address = address;
 	}
 	
 	public String[] getEmails() {
@@ -59,7 +59,7 @@ public class Person {
 	
 	@Override
 	public String toString() {
-		return "Person [code=" + code + ", lastName=" + lastName + ", firstName=" + firstName + ", address=" + address
+		return "Person [code=" + code + ", lastName=" + lastName + ", firstName=" + firstName + ", address=" + Address
 				+ ", emails=" + Arrays.toString(emails) + "]";
 	}
 }
