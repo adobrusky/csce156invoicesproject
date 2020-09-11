@@ -148,7 +148,7 @@ public class DataConverter {
 		//Creates a list of products from the Products.dat
 		List<Product> products = parseProducts();
     	
-		//Following loops print the objects. Need to convert from printing them to outputting in json files
+		//Following loops print the objects. Need to convert from printing them to outputting in json and or xml files
     	for(Person i : people) {
     		System.out.println(i);
     	}
