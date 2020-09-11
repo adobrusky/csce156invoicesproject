@@ -154,10 +154,10 @@ public class DataConverter {
 //    	I got bored and figured out how to convert it to json. Its missing the persons that is at the top of 
 //		the example Persons.json output file
 //		idk if that is a problem or not
-		
-    	Gson gson = new GsonBuilder().setPrettyPrinting().create();
-    	String personJson = gson.toJson(persons);
-    	System.out.println(personJson);
+	
+//    	Gson gson = new GsonBuilder().setPrettyPrinting().create();
+//    	String personJson = gson.toJson(persons);
+//    	System.out.println(personJson);
 
 	}
 
