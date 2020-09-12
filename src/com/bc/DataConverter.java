@@ -90,6 +90,7 @@ public class DataConverter {
     	
     	s.close();
     	return customers;
+    	
 	}
 
 	public static List<Product> parseProducts() {
@@ -154,7 +155,8 @@ public class DataConverter {
 //    	I got bored and figured out how to convert it to json. Its missing the persons that is at the top of 
 //		the example Persons.json output file
 //		idk if that is a problem or not
-	
+		Json_write.printJSON("data/persons1.json", persons);
+		Xml_write.printXML("data/persons1.xml", persons);
 //    	Gson gson = new GsonBuilder().setPrettyPrinting().create();
 //    	String personJson = gson.toJson(persons);
 //    	System.out.println(personJson);
