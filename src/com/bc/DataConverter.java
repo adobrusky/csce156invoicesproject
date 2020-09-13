@@ -6,9 +6,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
-
 public class DataConverter {
 	
 	public static Person findPrimaryContact(String code, List<Person> people) {
@@ -132,9 +129,6 @@ public class DataConverter {
     				products.add(new Towing(code, type, label, costPerMile));
     				break;
     		}
-
-    		
-    		
     	}
     	
     	s.close();
@@ -152,15 +146,9 @@ public class DataConverter {
 		//Creates a list of products from the Products.dat
 		List<Product> products = parseProducts();
     	
-//    	I got bored and figured out how to convert it to json. Its missing the persons that is at the top of 
-//		the example Persons.json output file
-//		idk if that is a problem or not
+		//Outputs persons into xml files and json files
 		Json_write.printJSON("data/persons1.json", persons);
-		Xml_write.printXML("data/persons1.xml", persons);
-//    	Gson gson = new GsonBuilder().setPrettyPrinting().create();
-//    	String personJson = gson.toJson(persons);
-//    	System.out.println(personJson);
-
+		//Xml_write.printXML("data/persons1.xml", persons);
 	}
 
 }
