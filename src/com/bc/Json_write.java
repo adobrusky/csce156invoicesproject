@@ -10,7 +10,7 @@ import com.google.gson.GsonBuilder;
 
 public class Json_write {
 	
-	public static <T> void printJSON(String filePath, List<T> list) {
+	public static <T> void printJSON(String filePath, List<T> list, String header) {
 		
 		GsonBuilder builder = new GsonBuilder();
 		builder.setPrettyPrinting();
@@ -18,10 +18,8 @@ public class Json_write {
 		
 		try {
 			PrintWriter out = new PrintWriter(new File(filePath));
-			String header = "Person";
-			
 			out.write("{\n");
-			out.write("\""+header+"\":");
+			out.write("\"" + header + "\":");
 			out.write(gson.toJson(list));
 			out.write("}");
 			out.close();

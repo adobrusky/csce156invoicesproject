@@ -1,4 +1,5 @@
 <?xml version="1.0"?>
+<products>
 <product>
   <code>qwertyuiop</code>
   <type>R</type>
@@ -53,3 +54,4 @@
   <label>Tow &gt; 10 miles</label>
   <costPerMile>4.0</costPerMile>
 </product>
+</products>
