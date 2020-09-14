@@ -22,7 +22,7 @@ public class DataConverter {
 		//Scans info from Persons.dat and parses it into objects of people and returns a list of people
 		Scanner s = null;
     	try {
-			s = new Scanner(new File("data/Persons.dat"));
+			s = new Scanner(new File("data/personsTest.dat"));
 		} catch (FileNotFoundException e) {
 			throw new RuntimeException(e);
 		}
@@ -147,8 +147,16 @@ public class DataConverter {
 		List<Product> products = parseProducts();
     	
 		//Outputs persons into xml files and json files
-		Json_write.printJSON("data/persons1.json", persons);
-		//Xml_write.printXML("data/persons1.xml", persons);
+//		Json_write.printJSON("data/persons1.json", persons);
+//		Xml_write.printXML("data/persons1.xml", persons);
+//		
+		//Outputs cutomers into xml files and json files
+		Json_write.printJSON("data/customers1.json", customers);
+		Xml_write.printXML("data/cutomers1.xml", customers);
+		
+		//Outputs products into xml files and json files
+//		Json_write.printJSON("data/products1.json", products);
+//		Xml_write.printXML("data/products1.xml", products);
 	}
 
 }
