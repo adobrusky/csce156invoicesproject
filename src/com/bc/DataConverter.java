@@ -34,7 +34,7 @@ public class DataConverter {
     		String line = s.nextLine();
     		String tokens[] = line.split(";");
     		String code = tokens[0];
-    		String fullName[] = tokens[1].split(", ");
+    		String fullName[] = tokens[1].split(",");
     		String lastName = fullName[0];
     		String firstName = fullName[1];
     		String fullAddress[] = tokens[2].split(",");
@@ -146,9 +146,15 @@ public class DataConverter {
 		//Creates a list of products from the Products.dat
 		List<Product> products = parseProducts();
     	
-		//Outputs persons into xml files and json files
-		Json_write.printJSON("data/persons1.json", persons);
-		//Xml_write.printXML("data/persons1.xml", persons);
+		//Converts the objects to json and outputs the parsed data into json files
+		Json_write.printJSON("data/persons1.json", persons, "persons");
+		Json_write.printJSON("data/customers1.json", customers, "customers");
+		Json_write.printJSON("data/products1.json", products, "products");
+		
+		//Converts the objects to xml and outputs the parsed data into xml files
+		Xml_write.printXML("data/persons1.xml", persons, "persons");
+		Xml_write.printXML("data/customers1.xml", customers, "customers");
+		Xml_write.printXML("data/products1.xml", products, "products");
 	}
 
 }

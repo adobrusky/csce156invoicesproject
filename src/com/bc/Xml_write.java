@@ -10,16 +10,16 @@ import com.thoughtworks.xstream.io.xml.DomDriver;
 
 public class Xml_write {
 	
-	public static <T> void printXML(String filePath, List<T> list) {
+	public static <T> void printXML(String filePath, List<T> list, String title) {
 		
 		XStream xstream = new XStream(new DomDriver());
-		xstream.alias("Person", com.bc.Person.class);
+		xstream.alias(title.substring(0, title.length() - 1), com.bc.Person.class);
 		
 		try {
 			PrintWriter out = new PrintWriter(new File(filePath));
 			out.print("<?xml version=\"1.0\"?>\n");
-			String header = "<Person>";
-			String closer = "</Person>";
+			String header = "<" + title + ">";
+			String closer = "</" + title + ">";
 			
 			out.write(header);
 			for(T entry : list) {
