@@ -23,6 +23,7 @@ public class Json_write {
 			out.write(gson.toJson(list));
 			out.write("}");
 			out.close();
+			
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
 		}

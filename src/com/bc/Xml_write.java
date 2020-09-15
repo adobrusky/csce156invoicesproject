@@ -9,73 +9,31 @@ import com.thoughtworks.xstream.XStream;
 import com.thoughtworks.xstream.io.xml.DomDriver;
 
 public class Xml_write {
-
+	
 	public static <T> void printXML(String filePath, List<T> list, String title) {
-		switch (title) {
-		case "persons":
-			XStream xstream1 = new XStream(new DomDriver());
-			xstream1.alias(title.substring(0, title.length() - 1), com.bc.Person.class);
-			try {
-				PrintWriter out = new PrintWriter(new File(filePath));
-				out.print("<?xml version=\"1.0\"?>\n");
-				String header = "<Persons>\n";
-				String closer = "</Persons>";
+		XStream xstream = new XStream(new DomDriver());
+		xstream.alias("person", com.bc.Person.class);
+		xstream.alias("customer", com.bc.Customer.class);
+		xstream.alias("product", com.bc.Rental.class);
+		xstream.alias("product", com.bc.Repair.class);
+		xstream.alias("product", com.bc.Towing.class);
+		xstream.alias("product", com.bc.Concession.class);
+		try {
+			PrintWriter out = new PrintWriter(new File(filePath));
+			out.print("<?xml version=\"1.0\"?>\n");
+			String header = "<" + title + ">\n";
+			String closer = "</" + title + ">";
 
-				out.write(header);
-				for (T entry : list) {
+			out.write(header);
+			for (T entry : list) {
 
-					out.write(xstream1.toXML(entry));
-					out.write("\n");
-				}
-				out.write(closer);
-				out.close();
-			} catch (FileNotFoundException e) {
-				e.printStackTrace();
+				out.write(xstream.toXML(entry));
+				out.write("\n");
 			}
-			break;
-		case "customers":
-			XStream xstream2 = new XStream(new DomDriver());
-			xstream2.alias(title.substring(0, title.length() - 1), com.bc.Customer.class);
-			try {
-				PrintWriter out = new PrintWriter(new File(filePath));
-				out.print("<?xml version=\"1.0\"?>\n");
-				String header = "<Customers>\n";
-				String closer = "</Customers>";
-
-				out.write(header);
-				for (T entry : list) {
-
-					out.write(xstream2.toXML(entry));
-					out.write("\n");
-				}
-				out.write(closer);
-				out.close();
-			} catch (FileNotFoundException e) {
-				e.printStackTrace();
-			}
-			break;
-		case "products":
-			XStream xstream3 = new XStream(new DomDriver());
-			xstream3.alias(title.substring(0, title.length() - 1), com.bc.Product.class);
-			try {
-				PrintWriter out = new PrintWriter(new File(filePath));
-				out.print("<?xml version=\"1.0\"?>\n");
-				String header = "<Products>\n";
-				String closer = "</Products>";
-
-				out.write(header);
-				for (T entry : list) {
-
-					out.write(xstream3.toXML(entry));
-					out.write("\n");
-				}
-				out.write(closer);
-				out.close();
-			} catch (FileNotFoundException e) {
-				e.printStackTrace();
-			}
-			break;
-
+			out.write(closer);
+			out.close();
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
 		}
 
 	}

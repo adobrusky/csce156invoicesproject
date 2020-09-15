@@ -146,29 +146,15 @@ public class DataConverter {
 		//Creates a list of products from the Products.dat
 		List<Product> products = parseProducts();
     	
-//<<<<<<< HEAD
-		//Outputs persons into xml files and json files
-//		Json_write.printJSON("data/persons1.json", persons);
-//		Xml_write.printXML("data/persons1.xml", persons);
-//		
-		//Outputs cutomers into xml files and json files
-//		Json_write.printJSON("data/customers1.json", customers);
-//		Xml_write.printXML("data/cutomers1.xml", customers);
+		//Converts the objects to json and outputs the parsed data into .json files
+		Json_write.printJSON("data/persons1.json", persons, "persons");
+		Json_write.printJSON("data/customers1.json", customers, "customers");
+		Json_write.printJSON("data/products1.json", products, "products");
 		
-		//Outputs products into xml files and json files
-//		Json_write.printJSON("data/products1.json", products);
-//		Xml_write.printXML("data/products1.xml", products);
-//=======
-		//Converts the objects to json and outputs the parsed data into json files
-//		Json_write.printJSON("data/persons1.json", persons, "persons");
-//		Json_write.printJSON("data/customers1.json", customers, "customers");
-//		Json_write.printJSON("data/products1.json", products, "products");
-		
-		//Converts the objects to xml and outputs the parsed data into xml files
+		//Converts the objects to xml and outputs the parsed data into .xml files
 		Xml_write.printXML("data/persons1.xml", persons, "persons");
 		Xml_write.printXML("data/customers1.xml", customers, "customers");
 		Xml_write.printXML("data/products1.xml", products, "products");
-//>>>>>>> branch 'master' of https://github.com/thefierytortoise/cs156assignment2
 	}
 
 }
