@@ -148,6 +148,8 @@
     <zip> 070708</zip>
     <country> England</country>
   </Address>
-  <emails/>
+  <emails>
+    <string></string>
+  </emails>
 </person>
 </persons>

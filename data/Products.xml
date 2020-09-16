@@ -13,13 +13,13 @@
   <type>F</type>
   <label>Bumper Replacement</label>
   <partsCost>100.0</partsCost>
-  <laborRate>75.0</laborRate>
+  <hourlyLaborCost>75.0</hourlyLaborCost>
 </product>
 <product>
   <code>k04l4</code>
   <type>C</type>
   <label>12-oz Coffee</label>
-  <cost>4.75</cost>
+  <unitCost>4.75</unitCost>
 </product>
 <product>
   <code>sievub</code>
@@ -40,13 +40,13 @@
   <type>F</type>
   <label>Full Wheel Replacement</label>
   <partsCost>800.0</partsCost>
-  <laborRate>25.0</laborRate>
+  <hourlyLaborCost>25.0</hourlyLaborCost>
 </product>
 <product>
   <code>kvnjgbf5</code>
   <type>C</type>
   <label>Large &quot;Homemade&quot; Raisin Cookie</label>
-  <cost>10.0</cost>
+  <unitCost>10.0</unitCost>
 </product>
 <product>
   <code>ugis43</code>

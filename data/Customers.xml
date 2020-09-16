@@ -26,7 +26,6 @@
     <zip>80706</zip>
     <country>USA</country>
   </address>
-  <taxRate>0.0425</taxRate>
 </customer>
 <customer>
   <code>dvkh</code>
@@ -54,7 +53,6 @@
     <zip></zip>
     <country>CUBA</country>
   </address>
-  <taxRate>0.08</taxRate>
 </customer>
 <customer>
   <code>l0000000000ngc0d3</code>
@@ -83,7 +81,6 @@
     <zip>11368</zip>
     <country>USA</country>
   </address>
-  <taxRate>0.0425</taxRate>
 </customer>
 <customer>
   <code>asdf419</code>
@@ -111,7 +108,6 @@
     <zip>60613</zip>
     <country>USA</country>
   </address>
-  <taxRate>0.08</taxRate>
 </customer>
 <customer>
   <code>421asdf</code>
@@ -139,7 +135,6 @@
     <zip>07073</zip>
     <country>USA</country>
   </address>
-  <taxRate>0.0425</taxRate>
 </customer>
 <customer>
   <code>avnkbkjds</code>
@@ -167,6 +162,5 @@
     <zip>90210</zip>
     <country>USA</country>
   </address>
-  <taxRate>0.08</taxRate>
 </customer>
 </customers>

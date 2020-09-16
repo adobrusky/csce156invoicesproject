@@ -1,5 +1,5 @@
 {
-"assets": [
+"products":[
   {
     "dailyCost": 50.75,
     "deposit": 200.0,
@@ -10,13 +10,13 @@
   },
   {
     "partsCost": 100.0,
-    "laborRate": 75.0,
+    "hourlyLaborCost": 75.0,
     "code": "b4z1ng4",
     "type": "F",
     "label": "Bumper Replacement"
   },
   {
-    "cost": 4.75,
+    "unitCost": 4.75,
     "code": "k04l4",
     "type": "C",
     "label": "12-oz Coffee"
@@ -37,13 +37,13 @@
   },
   {
     "partsCost": 800.0,
-    "laborRate": 25.0,
+    "hourlyLaborCost": 25.0,
     "code": "t0m03",
     "type": "F",
     "label": "Full Wheel Replacement"
   },
   {
-    "cost": 10.0,
+    "unitCost": 10.0,
     "code": "kvnjgbf5",
     "type": "C",
     "label": "Large \"Homemade\" Raisin Cookie"

@@ -1,5 +1,5 @@
 {
-"customers": [
+"customers":[
   {
     "code": "lsvntk",
     "type": "B",
@@ -25,8 +25,7 @@
       "state": "NM",
       "zip": "80706",
       "country": "USA"
-    },
-    "taxRate": 0.0425
+    }
   },
   {
     "code": "dvkh",
@@ -53,8 +52,7 @@
       "state": " NL",
       "zip": "",
       "country": "CUBA"
-    },
-    "taxRate": 0.08
+    }
   },
   {
     "code": "l0000000000ngc0d3",
@@ -82,8 +80,7 @@
       "state": " NY",
       "zip": "11368",
       "country": "USA"
-    },
-    "taxRate": 0.0425
+    }
   },
   {
     "code": "asdf419",
@@ -110,8 +107,7 @@
       "state": "IL",
       "zip": "60613",
       "country": "USA"
-    },
-    "taxRate": 0.08
+    }
   },
   {
     "code": "421asdf",
@@ -138,8 +134,7 @@
       "state": " NJ",
       "zip": "07073",
       "country": "USA"
-    },
-    "taxRate": 0.0425
+    }
   },
   {
     "code": "avnkbkjds",
@@ -166,7 +161,6 @@
       "state": "CA",
       "zip": "90210",
       "country": "USA"
-    },
-    "taxRate": 0.08
+    }
   }
 ]}
