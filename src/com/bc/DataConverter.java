@@ -146,16 +146,15 @@ public class DataConverter {
 		//Creates a list of products from the Products.dat
 		List<Product> products = parseProducts();
 		
-    	
-//		//Converts the objects to json and outputs the parsed data into .json files
-//		Json_write.printJSON("data/Persons.json", persons, "persons");
-//		Json_write.printJSON("data/Customers.json", customers, "customers");
-//		Json_write.printJSON("data/Products.json", products, "products");
-//		
-//		//Converts the objects to xml and outputs the parsed data into .xml files
-//		Xml_write.printXML("data/Persons.xml", persons, "persons");
-//		Xml_write.printXML("data/Customers.xml", customers, "customers");
-//		Xml_write.printXML("data/Products.xml", products, "products");
+		//Converts the objects to json and outputs the parsed data into .json files
+		Json_write.printJSON("data/Persons.json", persons, "persons");
+		Json_write.printJSON("data/Customers.json", customers, "customers");
+		Json_write.printJSON("data/Products.json", products, "products");
+		
+		//Converts the objects to xml and outputs the parsed data into .xml files
+		Xml_write.printXML("data/Persons.xml", persons, "persons");
+		Xml_write.printXML("data/Customers.xml", customers, "customers");
+		Xml_write.printXML("data/Products.xml", products, "products");
 	}
 
 }
