@@ -135,6 +135,15 @@ public class DataConverter {
     	return products;
 	}
 	
+	public static String multiplyString(String in, int rep) {
+		//Multiply strings. Makes it easier for formatting the reports with repeated characters
+		String result = "";
+		for(int i = 0; i < rep; i++) {
+			result += in;
+		}
+		return result;
+	}
+	
 	public static void main(String[] args) {
 		
 		//Creates a list of people from the Persons.dat

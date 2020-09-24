@@ -9,6 +9,7 @@ import java.util.Scanner;
 public class PortfolioReport {
 	
 	public static Product findProduct(String productCode) {
+		//Find the product from the given code
 		for(Product i : DataConverter.parseProducts()) {
 			if(i.getCode().equals(productCode)) {
 				return i;
@@ -18,6 +19,7 @@ public class PortfolioReport {
 	}
 	
 	public static Person findOwner(String ownerCode) {
+		//Find the person from the given code
 		for(Person i : DataConverter.parsePersons()) {
 			if(i.getCode().equals(ownerCode)) {
 				return i;
@@ -27,6 +29,7 @@ public class PortfolioReport {
 	}
 	
 	public static Customer findCustomer(String customerCode) {
+		//Find the customer from the given code
 		for(Customer i : DataConverter.parseCustomers(DataConverter.parsePersons())) {
 			if(i.getCode().equals(customerCode)) {
 				return i;
@@ -93,10 +96,8 @@ public class PortfolioReport {
 		//Creates a list of invoices from the Invoices.dat
 		List<Invoice> invoices = parseInvoices();
 		
-		
-		for(Invoice i : invoices) {
-			System.out.println(i);
-		}
+		//Print the summary report
+		System.out.println(SummaryReport.print(invoices));
 		
 	}
 

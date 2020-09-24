@@ -6,6 +6,7 @@ public class Customer {
 	private String name;
 	private Person primaryContact;
 	private Address address;
+	private double taxRate;
 	
 	public Customer(String c, char t, String n, Person p, Address a) {
 		setCode(c);
@@ -13,6 +14,7 @@ public class Customer {
 		setName(n);
 		setPrimaryContact(p);
 		setAddress(a);
+		setTaxRate();
 	}
 	
 	public String getCode() {
@@ -53,6 +55,14 @@ public class Customer {
 	
 	public void setAddress(Address address) {
 		this.address = address;
+	}
+	
+	public void setTaxRate() {
+		if(this.type == 'B') {
+			taxRate = 4.25;
+		} else {
+			taxRate = 8;
+		}
 	}
 	
 	@Override
