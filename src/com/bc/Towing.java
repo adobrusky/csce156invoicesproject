@@ -2,6 +2,7 @@ package com.bc;
 
 public class Towing extends Product {
 	private double costPerMile;
+	private int milesTowed;
 
 	public Towing(String c, char t, String l, double co) {
 		super(c, t, l);
@@ -16,10 +17,17 @@ public class Towing extends Product {
 		this.costPerMile = costPerMile;
 	}
 
+	public int getMilesTowed() {
+		return milesTowed;
+	}
+
+	public void setMilesTowed(int milesTowed) {
+		this.milesTowed = milesTowed;
+	}
+
 	@Override
 	public String toString() {
-		return super.toString() + "Towing [costPerMile=" + costPerMile + "]";
+		return "Towing [costPerMile=" + costPerMile + ", milesTowed=" + milesTowed + "]";
 	}
-	
 
 }

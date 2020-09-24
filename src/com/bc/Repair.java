@@ -4,6 +4,7 @@ public class Repair extends Product {
 	
 	private double partsCost;
 	private double hourlyLaborCost;
+	private int hoursWorked;
 
 	public Repair(String c, char t, String l, double p, double h) {
 		super(c, t, l);
@@ -27,11 +28,18 @@ public class Repair extends Product {
 		this.hourlyLaborCost = hourlyLaborCost;
 	}
 
+	public int getHoursWorked() {
+		return hoursWorked;
+	}
+
+	public void setHoursWorked(int hoursWorked) {
+		this.hoursWorked = hoursWorked;
+	}
+
 	@Override
 	public String toString() {
-		return super.toString() + "Repair [partsCost=" + partsCost + ", hourlyLaborCost=" + hourlyLaborCost + "]";
+		return "Repair [partsCost=" + partsCost + ", hourlyLaborCost=" + hourlyLaborCost + ", hoursWorked="
+				+ hoursWorked + "]";
 	}
-	
-	
 
 }

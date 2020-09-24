@@ -5,6 +5,7 @@ public class Rental extends Product {
 	private double dailyCost;
 	private double deposit;
 	private double cleaningFee;
+	private int daysRented; 
 	
 	public Rental(String c, char t, String l, double d, double de, double cf) {
 		super(c, t, l);
@@ -36,13 +37,21 @@ public class Rental extends Product {
 	public void setCleaningFee(double cleaningFee) {
 		this.cleaningFee = cleaningFee;
 	}
+	
+
+	public int getDaysRented() {
+		return daysRented;
+	}
+
+	public void setDaysRented(int daysRented) {
+		this.daysRented = daysRented;
+	}
 
 	@Override
 	public String toString() {
-		return super.toString() + "Rental [dailyCost=" + dailyCost + ", deposit=" + deposit + ", cleaningFee=" + cleaningFee
-				+ "]";
+		return "Rental [dailyCost=" + dailyCost + ", deposit=" + deposit + ", cleaningFee=" + cleaningFee
+				+ ", daysRented=" + daysRented + "]";
 	}
-	
 	
 
 }

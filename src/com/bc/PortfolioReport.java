@@ -3,10 +3,38 @@ package com.bc;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Scanner;
 
 public class PortfolioReport {
+	
+	public static Product findProduct(String productCode) {
+		for(Product i : DataConverter.parseProducts()) {
+			if(i.getCode().equals(productCode)) {
+				return i;
+			}
+		}
+		return null;
+	}
+	
+	public static Person findOwner(String ownerCode) {
+		for(Person i : DataConverter.parsePersons()) {
+			if(i.getCode().equals(ownerCode)) {
+				return i;
+			}
+		}
+		return null;
+	}
+	
+	public static Customer findCustomer(String customerCode) {
+		for(Customer i : DataConverter.parseCustomers(DataConverter.parsePersons())) {
+			if(i.getCode().equals(customerCode)) {
+				return i;
+			}
+		}
+		return null;
+	}
 	
 	public static List<Invoice> parseInvoices() {
 		//Scans info from Invoices.dat and parses it into objects of invoice and returns a list of invoices
@@ -23,23 +51,38 @@ public class PortfolioReport {
     	while(s.hasNext()) {
     		String line = s.nextLine();
     		String tokens[] = line.split(";");
-    		String code = tokens[0];
-    		String fullName[] = tokens[1].split(",");
-    		String lastName = fullName[0];
-    		String firstName = fullName[1];
-    		String fullAddress[] = tokens[2].split(",");
-    		String street = fullAddress[0];
-    		String city = fullAddress[1];
-    		String state = fullAddress[2];
-    		String zip = fullAddress[3];
-    		String country = fullAddress[4];
-    		String emails[] = {""};
-    		
-    		if(tokens.length > 3) {
-        		emails = tokens[3].split(",");
+    		String invoiceCode = tokens[0];
+    		String ownerCode = tokens[1];
+    		String customerCode = tokens[2];
+    		String productToken[] = tokens[3].split(",");
+    		List<Product> productList = new ArrayList<Product>();
+    		for(int i = 0; i < productToken.length; i++) {
+    			String productInfo[] = productToken[i].split(":");
+    			Product product = findProduct(productInfo[0]);
+    			for(int j = 0; j < productInfo.length; j++) {
+    				switch(product.getType()) {
+    					case 'R':
+    						((Rental)product).setDaysRented(Integer.parseInt(productInfo[1]));
+    						break;
+    					case 'F':
+    						((Repair)product).setHoursWorked(Integer.parseInt(productInfo[1]));
+    						break;
+    					case 'C':
+    						((Concession)product).setQuanity(Integer.parseInt(productInfo[1]));
+    						if(productInfo.length == 3) {
+        						((Concession)product).setAssociatedRepair(productInfo[2]);
+    						}
+    						break;
+    					case 'T':
+    						((Towing)product).setMilesTowed(Integer.parseInt(productInfo[1]));
+    						break;
+    				}
+    				
+    			}
+    			productList.add(product);
     		}
+    		invoices.add(new Invoice(invoiceCode, findOwner(ownerCode), findCustomer(customerCode), productList));
     		
-    		//invoices.add(new Person(code, lastName, firstName, new Address(street, city, state, zip, country), emails));	
     	}
     	
     	s.close();
@@ -49,8 +92,12 @@ public class PortfolioReport {
 	public static void main(String[] args) {
 		
 		//Creates a list of invoices from the Invoices.dat
-		//I just copied in the code from parsePersons and i have only changed variable names so it doesnt work
 		List<Invoice> invoices = parseInvoices();
+		
+		
+		for(Invoice i : invoices) {
+			System.out.println(i);
+		}
 		
 	}
 
