@@ -3,12 +3,12 @@ package com.bc;
 import java.util.Arrays;
 import java.util.List;
 
-public class InvoiceDetails extends PortfolioReport {
+//InvoiceDetails prints the invoice details report
+public class InvoiceDetails extends InvoiceReport {
 
-	//Print the Invoice details report
 	public static String print(List<Invoice> invoices) {
 		
-		String columnFormat = "%-10s%-20s%-30s%-12s%-12s%-12s%-12s%-12s\n";
+		//String columnFormat = "%-10s%-20s%-30s%-12s%-12s%-12s%-12s%-12s\n";
 		
 		//Top layer formatting
 		String result = "";

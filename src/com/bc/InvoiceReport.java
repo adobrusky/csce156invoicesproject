@@ -1,6 +1,7 @@
 package com.bc;
 
-public class PortfolioReport extends DataConverter {
+//InvoiceReport class will print the summary report and the invoice details report based on the parsed lists from the .dat files
+public class InvoiceReport extends DataConverter {
 	
 	public static String multiplyString(String in, int rep) {
 		//Multiply strings. Makes it easier for formatting the reports with repeated characters

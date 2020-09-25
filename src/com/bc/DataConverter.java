@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
+//DataConverter class parses all information provided in .dat files into objects and stores them as lists that can be accessed with getter methods
 public class DataConverter {
 	
 	//Stores a list of each type of parsed data
@@ -234,14 +235,14 @@ public class DataConverter {
 	public static void main(String[] args) {
 		
 		//Converts the objects to json and outputs the parsed data into .json files
-		Json_write.printJSON("data/Persons.json", persons, "persons");
-		Json_write.printJSON("data/Customers.json", customers, "customers");
-		Json_write.printJSON("data/Products.json", products, "products");
+		jsonWrite.printJSON("data/Persons.json", persons, "persons");
+		jsonWrite.printJSON("data/Customers.json", customers, "customers");
+		jsonWrite.printJSON("data/Products.json", products, "products");
 		
 		//Converts the objects to xml and outputs the parsed data into .xml files
-		Xml_write.printXML("data/Persons.xml", persons, "persons");
-		Xml_write.printXML("data/Customers.xml", customers, "customers");
-		Xml_write.printXML("data/Products.xml", products, "products");
+		xmlWrite.printXML("data/Persons.xml", persons, "persons");
+		xmlWrite.printXML("data/Customers.xml", customers, "customers");
+		xmlWrite.printXML("data/Products.xml", products, "products");
 	}
 
 }

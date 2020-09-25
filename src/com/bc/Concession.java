@@ -1,24 +1,21 @@
 package com.bc;
 
+//Concession class represents a concession product
 public class Concession extends Product {
 
 	private double unitCost;
 	private int quanity;
 	private String associatedRepair;
-
-	public Concession(String c, char t, String l, double u) {
-		super(c, t, l);
-		setUnitCost(u);
-	}
 	
-	public double getUnitCost() {
-		return unitCost;
-	}
-
-	public void setUnitCost(double unitCost) {
+	public Concession(String c, char t, String l, double unitCost) {
+		super(c, t, l);
 		this.unitCost = unitCost;
 	}
 
+	public double getUnitCost() {
+		return unitCost;
+	}
+	
 	public int getQuanity() {
 		return quanity;
 	}

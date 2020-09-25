@@ -2,9 +2,9 @@ package com.bc;
 
 import java.util.List;
 
-public class SummaryReport extends PortfolioReport {
+//SummaryReport prints the summary report
+public class SummaryReport extends InvoiceReport {
 	
-	//Print the summary report
 	public static String print(List<Invoice> invoices) {
 		
 		String columnFormat = "%-10s%-20s%-30s%-13s%-13s%-13s%-13s%-13s\n";

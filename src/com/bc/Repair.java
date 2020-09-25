@@ -1,33 +1,26 @@
 package com.bc;
 
+//Repair class holds all of the information regarding a repair product
 public class Repair extends Product {
 	
 	private double partsCost;
 	private double hourlyLaborCost;
 	private int hoursWorked;
 
-	public Repair(String c, char t, String l, double p, double h) {
-		super(c, t, l);
-		setPartsCost(p);
-		setHourlyLaborCost(h);
+	public Repair(String code, char type, String label, double partsCost, double hourlyLaborCost) {
+		super(code, type, label);
+		this.partsCost = partsCost;
+		this.hourlyLaborCost = hourlyLaborCost;
 	}
 
 	public double getPartsCost() {
 		return partsCost;
 	}
 
-	public void setPartsCost(double partsCost) {
-		this.partsCost = partsCost;
-	}
-
 	public double getHourlyLaborCost() {
 		return hourlyLaborCost;
 	}
-
-	public void setHourlyLaborCost(double hourlyLaborCost) {
-		this.hourlyLaborCost = hourlyLaborCost;
-	}
-
+	
 	public int getHoursWorked() {
 		return hoursWorked;
 	}

@@ -8,7 +8,8 @@ import java.util.List;
 import com.thoughtworks.xstream.XStream;
 import com.thoughtworks.xstream.io.xml.DomDriver;
 
-public class Xml_write {
+//xmlWrite class will take a list and output it as xml
+public class xmlWrite {
 	
 	public static <T> void printXML(String filePath, List<T> list, String title) {
 		XStream xstream = new XStream(new DomDriver());

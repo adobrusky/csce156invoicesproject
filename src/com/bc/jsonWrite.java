@@ -8,7 +8,8 @@ import java.util.List;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
-public class Json_write {
+//jsonWrite class will take a list and output it as json
+public class jsonWrite {
 	
 	public static <T> void printJSON(String filePath, List<T> list, String header) {
 		

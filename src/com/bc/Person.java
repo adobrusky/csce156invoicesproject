@@ -9,52 +9,32 @@ public class Person {
 	private Address Address;
 	private String[] emails;
 	
-	public Person(String c, String l, String f, Address a, String[] e) {
-		setCode(c);
-		setLastName(l);
-		setFirstName(f);
-		setAddress(a);
-		setEmails(e);
+	public Person(String code, String firstName, String lastName, com.bc.Address address, String[] emails) {
+		this.code = code;
+		this.firstName = firstName;
+		this.lastName = lastName;
+		Address = address;
+		this.emails = emails;
 	}
-	
+
 	public String getCode() {
 		return code;
-	}
-	
-	public void setCode(String code) {
-		this.code = code;
 	}
 	
 	public String getLastName() {
 		return lastName;
 	}
 	
-	public void setLastName(String lastName) {
-		this.lastName = lastName;
-	}
-	
 	public String getFirstName() {
 		return firstName;
-	}
-	
-	public void setFirstName(String firstName) {
-		this.firstName = firstName;
 	}
 	
 	public Address getAddress() {
 		return Address;
 	}
 	
-	public void setAddress(Address address) {
-		this.Address = address;
-	}
-	
 	public String[] getEmails() {
 		return emails;
-	}
-	
-	public void setEmails(String[] emails) {
-		this.emails = emails;
 	}
 	
 	@Override
