@@ -8,10 +8,53 @@ import java.util.Scanner;
 
 public class DataConverter {
 	
-	public static Person findPrimaryContact(String code, List<Person> people) {
+	//Stores a list of each type of parsed data
+	private static List<Person> persons = parsePersons();
+	private static List<Customer> customers = parseCustomers();
+	private static List<Product> products = parseProducts();
+	private static List<Invoice> invoices = parseInvoices();
+	
+	//Getter functions for all of the lists
+	public static List<Person> getPersons() {
+		return persons;
+	}
+
+	public static List<Customer> getCustomers() {
+		return customers;
+	}
+
+	public static List<Product> getProducts() {
+		return products;
+	}
+
+	public static List<Invoice> getInvoices() {
+		return invoices;
+	}
+
+	public static Person findPerson(String code) {
 		//Finds a primary contact based on the given code
-		for(Person i : people) {
+		for(Person i : persons) {
 			if(i.getCode().equals(code)) {
+				return i;
+			}
+		}
+		return null;
+	}
+	
+	public static Product findProduct(String productCode) {
+		//Find the product from the given code
+		for(Product i : products) {
+			if(i.getCode().equals(productCode)) {
+				return i;
+			}
+		}
+		return null;
+	}
+	
+	public static Customer findCustomer(String customerCode) {
+		//Find the customer from the given code
+		for(Customer i : customers) {
+			if(i.getCode().equals(customerCode)) {
 				return i;
 			}
 		}
@@ -56,7 +99,7 @@ public class DataConverter {
     	return people;
 	}
 	
-	public static List<Customer> parseCustomers(List<Person> people) {
+	public static List<Customer> parseCustomers() {
 		//Scans info from Customers.dat and parses it into objects of customer and returns a list of customers
 		Scanner s = null;
     	try {
@@ -74,7 +117,7 @@ public class DataConverter {
     		String code = tokens[0];
     		char type = tokens[1].charAt(0);
     		String name = tokens[2];
-    		Person primaryContact = findPrimaryContact(tokens[3], people);
+    		Person primaryContact = findPerson(tokens[3]);
     		String fullAddress[] = tokens[4].split(",");
     		String street = fullAddress[0];
     		String city = fullAddress[1];
@@ -135,25 +178,60 @@ public class DataConverter {
     	return products;
 	}
 	
-	public static String multiplyString(String in, int rep) {
-		//Multiply strings. Makes it easier for formatting the reports with repeated characters
-		String result = "";
-		for(int i = 0; i < rep; i++) {
-			result += in;
+	public static List<Invoice> parseInvoices() {
+		//Scans info from Invoices.dat and parses it into objects of invoice and returns a list of invoices
+		Scanner s = null;
+    	try {
+			s = new Scanner(new File("data/Invoices.dat"));
+		} catch (FileNotFoundException e) {
+			throw new RuntimeException(e);
 		}
-		return result;
+    	
+    	int invoiceSize = Integer.parseInt(s.nextLine());
+    	List<Invoice> invoices = new ArrayList<Invoice>(invoiceSize);
+    	
+    	while(s.hasNext()) {
+    		String line = s.nextLine();
+    		String tokens[] = line.split(";");
+    		String invoiceCode = tokens[0];
+    		String ownerCode = tokens[1];
+    		String customerCode = tokens[2];
+    		String productToken[] = tokens[3].split(",");
+    		List<Product> productList = new ArrayList<Product>();
+    		for(int i = 0; i < productToken.length; i++) {
+    			String productInfo[] = productToken[i].split(":");
+    			Product product = findProduct(productInfo[0]);
+    			for(int j = 0; j < productInfo.length; j++) {
+    				switch(product.getType()) {
+    					case 'R':
+    						((Rental)product).setDaysRented(Integer.parseInt(productInfo[1]));
+    						break;
+    					case 'F':
+    						((Repair)product).setHoursWorked(Integer.parseInt(productInfo[1]));
+    						break;
+    					case 'C':
+    						((Concession)product).setQuanity(Integer.parseInt(productInfo[1]));
+    						if(productInfo.length == 3) {
+        						((Concession)product).setAssociatedRepair(productInfo[2]);
+    						}
+    						break;
+    					case 'T':
+    						((Towing)product).setMilesTowed(Integer.parseInt(productInfo[1]));
+    						break;
+    				}
+    				
+    			}
+    			productList.add(product);
+    		}
+    		invoices.add(new Invoice(invoiceCode, findPerson(ownerCode), findCustomer(customerCode), productList));
+    		
+    	}
+    	
+    	s.close();
+    	return invoices;
 	}
-	
+
 	public static void main(String[] args) {
-		
-		//Creates a list of people from the Persons.dat
-		List<Person> persons = parsePersons();
-		
-		//Creates a list of customers from the Customers.dat
-		List<Customer> customers = parseCustomers(persons);
-		
-		//Creates a list of products from the Products.dat
-		List<Product> products = parseProducts();
 		
 		//Converts the objects to json and outputs the parsed data into .json files
 		Json_write.printJSON("data/Persons.json", persons, "persons");

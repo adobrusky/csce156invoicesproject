@@ -2,27 +2,27 @@ package com.bc;
 
 import java.util.List;
 
-public class SummaryReport {
+public class SummaryReport extends PortfolioReport {
 	
 	//Print the summary report
 	public static String print(List<Invoice> invoices) {
 		
-		String columnFormat = "%-10s%-20s%-30s%-15s%-15s%-15s%-15s%-15s\n";
+		String columnFormat = "%-10s%-20s%-30s%-13s%-13s%-13s%-13s%-13s\n";
 		
 		//Top layer formatting
 		String result = "";
 		result += "Executive Summary Report:\n\n";
-		result += String.format(columnFormat, "Code", "Owner", "Customer Account", "Subtotal", "Discounts", "Fees", "Taxes", "Total");
-		result += DataConverter.multiplyString("-", 132) + "\n";
+		result += String.format(columnFormat, "Code", "Owner", "Customer Account", " Subtotal", " Discounts", " Fees", " Taxes", " Total");
+		result += multiplyString("-", 130) + "\n";
 		
-		//Body of report
+		//Body of report TODO:replace placeholder 20.25 with actual numbers
 		for(Invoice i : invoices) {
 			result += String.format(columnFormat, i.getInvoiceCode(), i.getOwner().getLastName() + "," + i.getOwner().getFirstName(), 
-					i.getCustomer().getName(), "$", "$", "$", "$", "$");
+					i.getCustomer().getName(), $(20.25), $(20.25), $(20.25), $(20.25), $(20.25));
 		}
 		
 		//Bottom layer formatting
-		result += DataConverter.multiplyString("=", 132) + "\n";
+		result += multiplyString("=", 130) + "\n";
 		result += String.format(columnFormat, "TOTALS", "", "", "", "", "", "", "");
 		return result;
 	}
