@@ -66,7 +66,7 @@ public class DataConverter {
 		//Scans info from Persons.dat and parses it into objects of people and returns a list of people
 		Scanner s = null;
     	try {
-			s = new Scanner(new File("data/Persons.dat"));
+			s = new Scanner(new File("data/PersonsE.dat"));
 		} catch (FileNotFoundException e) {
 			throw new RuntimeException(e);
 		}
@@ -104,7 +104,7 @@ public class DataConverter {
 		//Scans info from Customers.dat and parses it into objects of customer and returns a list of customers
 		Scanner s = null;
     	try {
-			s = new Scanner(new File("data/Customers.dat"));
+			s = new Scanner(new File("data/CustomersE.dat"));
 		} catch (FileNotFoundException e) {
 			throw new RuntimeException(e);
 		}
@@ -138,7 +138,7 @@ public class DataConverter {
 		//Scans info from Products.dat and parses it into objects of products and returns a list of products
 		Scanner s = null;
     	try {
-			s = new Scanner(new File("data/Products.dat"));
+			s = new Scanner(new File("data/ProductsE.dat"));
 		} catch (FileNotFoundException e) {
 			throw new RuntimeException(e);
 		}
@@ -183,7 +183,7 @@ public class DataConverter {
 		//Scans info from Invoices.dat and parses it into objects of invoice and returns a list of invoices
 		Scanner s = null;
     	try {
-			s = new Scanner(new File("data/Invoices.dat"));
+			s = new Scanner(new File("data/InvoicesE.dat"));
 		} catch (FileNotFoundException e) {
 			throw new RuntimeException(e);
 		}

@@ -2,12 +2,12 @@ Executive Summary Report:
 
 Code      Owner                         Customer Account               Subtotal    Discounts   Fees        Taxes       Total       
 --------------------------------------------------------------------------------------------------------------------------------
-INV001    Battle, Petra                 State of Nebraska             $   368.39  $   -63.00  $    75.50  $    15.66  $   396.55
+INV001    Battle, Petra                 State of Nebraska             $   368.39  $   -63.00  $    75.50  $    12.98  $   393.87
 INV002    Spooner, Kenan                Fenton Industries             $   908.50  $     0.00  $     0.00  $    72.68  $   981.18
 INV003    Battle, Petra                 Juno Stephenson               $   120.00  $    -6.48  $     0.00  $     9.60  $   123.12
 INV004    Medrano, Wiktoria             Demolition Derby              $  9145.00  $     0.00  $    75.50  $   388.66  $  9609.16
 ================================================================================================================================
-TOTALS                                                                $ 10541.89  $   -69.48  $   151.00  $   486.60  $ 11110.01
+TOTALS                                                                $ 10541.89  $   -69.48  $   151.00  $   483.92  $ 11107.33
 
 
 

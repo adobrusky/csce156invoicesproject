@@ -3,7 +3,7 @@ package com.bc;
 import java.util.List;
 
 //Invoice class holds all the information for an invoice
-public class Invoice {
+public class Invoice implements Comparable<Invoice> {
 	
 	private String invoiceCode;
 	private Person owner;
@@ -38,8 +38,10 @@ public class Invoice {
 		return "Invoice [invoiceCode=" + invoiceCode + ", owner=" + owner + ", customer=" + customer
 				+ ", listOfProducts=" + listOfProducts + "]";
 	}
-	
-	
-	
 
+	@Override
+	public int compareTo(Invoice other) {
+		return getCustomer().getName().compareTo(other.getCustomer().getName());
+	}
+	
 }
