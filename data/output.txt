@@ -1,127 +1,127 @@
 Executive Summary Report:
 
-Code      Owner                         Customer Account               Subtotal    Discounts   Fees        Taxes       Total       
---------------------------------------------------------------------------------------------------------------------------------
-INV001    Battle, Petra                 State of Nebraska             $   368.39  $   -63.00  $    75.50  $    12.98  $   393.87
-INV002    Spooner, Kenan                Fenton Industries             $   908.50  $     0.00  $     0.00  $    72.68  $   981.18
-INV003    Battle, Petra                 Juno Stephenson               $   120.00  $    -6.48  $     0.00  $     9.60  $   123.12
-INV004    Medrano, Wiktoria             Demolition Derby              $  9145.00  $     0.00  $    75.50  $   388.66  $  9609.16
-================================================================================================================================
-TOTALS                                                                $ 10541.89  $   -69.48  $   151.00  $   483.92  $ 11107.33
+Code      Owner                         Customer Account               Subtotal     Discounts    Fees         Taxes        Total       
+---------------------------------------------------------------------------------------------------------------------------------------
+INV002    Jordanna, Rosina              Ainyx                         $   1171.21  $      0.00  $      0.00  $     93.66  $   1264.87  
+INV001    Wendi, Wickens                Brightbean                    $    938.00  $     -4.90  $     75.50  $     39.65  $   1047.42  
+INV003    Maximilian, Mattusevich       Rhycero                       $    199.80  $     -5.98  $     75.50  $      8.24  $    202.06  
+INV004    Fayth, Leitch                 Zoozzy                        $    108.80  $      0.00  $      0.00  $      8.70  $    117.50  
+=======================================================================================================================================
+TOTALS                                                                $   2417.81  $    -10.88  $    151.00  $    150.25  $   2631.85  
 
 
 
 Invoice Details:
-=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+
+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+
 Invoice INV001
-------------------------------------------
+--------------------------------------------------
 Owner:
-	Battle, Petra
-	[danextpm@canada.gov]
-	1 Blue Jays Way
-	Toronto, ON Canada M5V 1J1
+	Wendi, Wickens
+	[wwickens0@last.fm]
+	750 Barby Terrace
+	Lancaster, PA USA 17622
 Customer:
-	State of Nebraska (Business Account)
-	100 W Fake Street
-	Albaquerque, NM USA 80706
+	Brightbean (Business Account)
+	74511 Forest Dale Park
+	Carol Stream, IL United States 60351
 Products:
-  Code        Description                                                            Subtotal     Discount     Taxes        Total        
-  ------------------------------------------------------------------------------------------------------------------------------------
-  qwertyuiop  2007 Ford Crown Victoria (4.00 days @ $50.75/day)                     $     28.39  $      0.00  $      1.21  $     29.60
-              (+ $25.39 cleaning fee, -$200.00 deposit refund)
-  b4z1ng4     Bumper Replacement (2.00 hours of labor @ $75.00/hour)                $    250.00  $      0.00  $     10.63  $    260.63
-              (+ $100.00 for parts)
-  ugis43      Tow > 10 miles (15.00 miles @ $4.00/mile)                             $     60.00  $    -60.00  $      0.00  $      0.00
-  kvnjgbf5    Large "Homemade" Raisin Cookie (3 units @ $10.00/unit)                $     30.00  $     -3.00  $      1.15  $     28.15
-======================================================================================================================================
-ITEM TOTALS:                                                                        $    368.39  $    -63.00  $     12.98  $    318.37
-BUSINESS ACCOUNT FEE:                                                                                                      $     75.50
-GRAND TOTAL:                                                                                                               $    393.87
+  Code                Description                                                            Subtotal     Discount     Taxes        Total       
+  --------------------------------------------------------------------------------------------------------------------------------------------
+  rtog8jrtg8j4        New Tires (2 hours of labor @ $50.0/hour)                             $    749.00  $      0.00  $     31.83  $    780.83  
+                      (+ $649.0 for parts)                                                  
+  hko234              Oil Change (2 hours of labor @ $20.0/hour)                            $    140.00  $      0.00  $      5.95  $    145.95 
+                      (+ $100.0 for parts)                                                  
+  4502ghnt0           Brownie (14 units @ $3.5/unit)                                        $     49.00  $     -4.90  $      1.87  $     45.97  
+==============================================================================================================================================
+ITEM TOTALS:                                                                                $    938.00  $     -4.90  $     39.65  $    971.92 
+BUSINESS ACCOUNT FEE:                                                                                                              $     75.50  
+GRAND TOTAL:                                                                                                                       $   1047.42  
 
 
-		THANK YOU FOR DOING BUSINESS WITH US!
+	THANK YOU FOR DOING BUSINESS WITH US!
 
 
 
-=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+
+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+
 Invoice INV002
-------------------------------------------
+--------------------------------------------------
 Owner:
-	Spooner, Kenan
-	[kspoons@emailservice.domain, thespoonman@soundgarden.com]
-	123 N 1st Street
-	Compton, CA USA 90210
+	Jordanna, Rosina
+	[jrosina1@msu.edu]
+	8 Becker Avenue
+	Boise, ID USA 83711
 Customer:
-	Fenton Industries (Personal Account)
-	1060 West Addison Street
-	Chicago, IL USA 60613
+	Ainyx (Personal Account)
+	3512 Shelley Way
+	Phoenix, AZ United States 85035
 Products:
-  Code        Description                                                            Subtotal     Discount     Taxes        Total        
-  ------------------------------------------------------------------------------------------------------------------------------------
-  t0m03       Full Wheel Replacement (1.00 hours of labor @ $25.00/hour)            $    825.00  $      0.00  $     66.00  $    891.00
-              (+ $800.00 for parts)
-  k04l4       12-oz Coffee (10 units @ $4.75/unit)                                  $     47.50  $      0.00  $      3.80  $     51.30
-  sievub      Tow < 10 Miles (6.00 miles @ $6.00/mile)                              $     36.00  $      0.00  $      2.88  $     38.88
-======================================================================================================================================
-ITEM TOTALS:                                                                        $    908.50  $      0.00  $     72.68  $    981.18
-GRAND TOTAL:                                                                                                               $    981.18
+  Code                Description                                                            Subtotal     Discount     Taxes        Total       
+  --------------------------------------------------------------------------------------------------------------------------------------------
+  519gynht7           Towing < 20 (15 miles @ $11.5/mile)                                   $    172.50  $      0.00  $     13.76  $    186.26  
+  7erg9197            Volkswagen (5 days @ $126.57/day)                                     $    998.71  $      0.00  $     79.90  $   1078.61  
+                      (+ $535.86 cleaning fee, -$170.0 deposit refund)                       
+==============================================================================================================================================
+ITEM TOTALS:                                                                                $   1171.21  $      0.00  $     93.66  $   1264.87  
+GRAND TOTAL:                                                                                                                       $   1264.87  
 
 
-		THANK YOU FOR DOING BUSINESS WITH US!
+	THANK YOU FOR DOING BUSINESS WITH US!
 
 
 
-=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+
+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+
 Invoice INV003
-------------------------------------------
+--------------------------------------------------
 Owner:
-	Battle, Petra
-	[danextpm@canada.gov]
-	1 Blue Jays Way
-	Toronto, ON Canada M5V 1J1
+	Maximilian, Mattusevich
+	[mmattusevich2@comsenz.com]
+	580 Pankratz Street
+	Tampa, FL USA 33694
 Customer:
-	Juno Stephenson (Personal Account)
-	123 N 1st Street
-	Compton, CA USA 90210
+	Rhycero (Business Account)
+	03683 Jenna Lane
+	Scranton, PA United States 18514
 Products:
-  Code        Description                                                            Subtotal     Discount     Taxes        Total        
-  ------------------------------------------------------------------------------------------------------------------------------------
-  kvnjgbf5    Large "Homemade" Raisin Cookie (12 units @ $10.00/unit)               $    120.00  $      0.00  $      9.60  $    129.60
-======================================================================================================================================
-ITEM TOTALS:                                                                        $    120.00  $      0.00  $      9.60  $    129.60
-LOYAL CUSTOMER DISCOUNT (5% OFF):                                                                                          $     -6.48
-GRAND TOTAL:                                                                                                               $    123.12
+  Code                Description                                                            Subtotal     Discount     Taxes        Total       
+  --------------------------------------------------------------------------------------------------------------------------------------------
+  hko234              Oil Change (2 hours of labor @ $20.0/hour)                            $    140.00  $      0.00  $      5.95  $    145.95  
+                      (+ $100.0 for parts)                                                  
+  31ghng93            Large Soda (20 units @ $2.99/unit)                                    $     59.80  $     -5.98  $      2.29  $     56.11  
+==============================================================================================================================================
+ITEM TOTALS:                                                                                $    199.80  $     -5.98  $      8.24  $    202.06  
+BUSINESS ACCOUNT FEE:                                                                                                              $     75.50
+GRAND TOTAL:                                                                                                                       $    277.56  
 
 
-		THANK YOU FOR DOING BUSINESS WITH US!
+	THANK YOU FOR DOING BUSINESS WITH US!
 
 
 
-=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+
+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+
 Invoice INV004
-------------------------------------------
+--------------------------------------------------
 Owner:
-	Medrano, Wiktoria
-	[therealwiki@gmail.com, wiktoria.m@yahoo.com]
-	1025 S Street st.
-	Chichago, IL USA 60613
+	Fayth, Leitch
+	[fleitch4@blogs.com]
+	095 Monument Crossing
+	Miami, FL USA 33147
 Customer:
-	Demolition Derby (Business Account)
-	126-01 Roosevelt Ave
-	Flushing, NY USA 11368
+	Zoozzy (Personal Account)
+	960 Buena Vista Way
+	Akron, OH United States 44321
 Products:
-  Code        Description                                                            Subtotal     Discount     Taxes        Total        
-  ------------------------------------------------------------------------------------------------------------------------------------
-  yuasi       Tesla Cybertruck (14.00 days @ $1000.00/day)                          $   9050.00  $      0.00  $    384.63  $   9434.63
-              (+ $50.00 cleaning fee, -$5000.00 deposit refund)
-  k04l4       12-oz Coffee (20 units @ $4.75/unit)                                  $     95.00  $      0.00  $      4.04  $     99.04
-======================================================================================================================================
-ITEM TOTALS:                                                                        $   9145.00  $      0.00  $    388.66  $   9533.66
-BUSINESS ACCOUNT FEE:                                                                                                      $     75.50
-GRAND TOTAL:                                                                                                               $   9609.16
+  Code                Description                                                            Subtotal     Discount     Taxes        Total       
+  --------------------------------------------------------------------------------------------------------------------------------------------
+  4502ghnt0           Brownie (14 units @ $3.5/unit)                                        $     49.00  $      0.00  $      3.92  $     52.92  
+  31ghng93            Large Soda (20 units @ $2.99/unit)                                    $     59.80  $      0.00  $      4.78  $     64.58  
+==============================================================================================================================================
+ITEM TOTALS:                                                                                $    108.80  $      0.00  $      8.70  $    117.50  
+GRAND TOTAL:                                                                                                                       $    117.50   
 
 
-		THANK YOU FOR DOING BUSINESS WITH US!
+	THANK YOU FOR DOING BUSINESS WITH US!
 
 
+
+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+
 

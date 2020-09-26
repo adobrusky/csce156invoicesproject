@@ -35,7 +35,7 @@ public class InvoiceReport extends DataConverter {
 				result += String.format(columnFormat.substring(7), product.getLabel() + 
 						" (" + ((Rental)product).getDaysRented() + " days @ $" + ((Rental)product).getDailyCost() + "/day)", 
 						subtotal, discount, taxes, total);
-				result += String.format(columnFormat.substring(0, 12), "", "(+ $" + ((Rental)product).getCleaningFee() + "cleaning fee, -$" + ((Rental)product).getDeposit() + " deposit refund)");
+				result += String.format(columnFormat.substring(0, 12), "", "(+ $" + ((Rental)product).getCleaningFee() + " cleaning fee, -$" + ((Rental)product).getDeposit() + " deposit refund)");
 				break;
 			case 'F':
 				result += String.format(columnFormat.substring(7), product.getLabel() + 

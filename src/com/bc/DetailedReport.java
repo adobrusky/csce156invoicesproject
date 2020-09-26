@@ -33,7 +33,13 @@ public class DetailedReport extends InvoiceReport {
 			}
 			result += multiplyString("=", 142) + "\n";
 			result += String.format("%-90s  %-13s%-13s%-13s%-13s\n", "ITEM TOTALS:", $(32), $(32), $(32), $(32));
-			//TODO: Implement business account fee and loyalty customer discount
+			if(i.getCustomer().getType() == 'B') {
+				result += String.format("%-129s  %-13s\n", "BUSINESS ACCOUNT FEE:", $(75.50));
+			} else {
+				if(i.getCustomer().getPrimaryContact().getEmails().length > 1) {
+					result += String.format("%-129s  %-13s\n", "LOYAL CUSTOMER DISCOUNT (5% OFF):", $(-65));
+				}
+			}
 			result += String.format("%-129s  %-13s\n", "GRAND TOTAL:", $(32));
 			result += "\n\n\tTHANK YOU FOR DOING BUSINESS WITH US!\n\n\n\n" + multiplyString("=+", 58) + "\n";
 		}
