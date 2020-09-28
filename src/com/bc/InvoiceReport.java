@@ -33,24 +33,24 @@ public class InvoiceReport extends DataConverter {
 		switch(product.getType()) {
 			case 'R':
 				result += String.format(columnFormat.substring(7), product.getLabel() + 
-						" (" + ((Rental)product).getDaysRented() + " days @ $" + ((Rental)product).getDailyCost() + "/day)", 
+						" (" + ((Rental)product).getDaysRented() + " days @ $" + String.format("%.2f", ((Rental)product).getDailyCost()) + "/day)", 
 						subtotal, discount, string, total);
-				result += String.format(columnFormat.substring(0, 12), "", "(+ $" + ((Rental)product).getCleaningFee() + " cleaning fee, -$" + ((Rental)product).getDeposit() + " deposit refund)");
+				result += String.format(columnFormat.substring(0, 12), "", "(+ $" + String.format("%.2f", ((Rental)product).getCleaningFee()) + " cleaning fee, -$" + String.format("%.2f", ((Rental)product).getDeposit()) + " deposit refund)");
 				break;
 			case 'F':
 				result += String.format(columnFormat.substring(7), product.getLabel() + 
-						" (" + ((Repair)product).getHoursWorked() + " hours of labor @ $" + ((Repair)product).getHourlyLaborCost() + "/hour)", 
+						" (" + ((Repair)product).getHoursWorked() + " hours of labor @ $" + String.format("%.2f", ((Repair)product).getHourlyLaborCost()) + "/hour)", 
 						subtotal, discount, string, total);
-				result += String.format(columnFormat.substring(0, 12), "", "(+ $" + ((Repair)product).getPartsCost() + " for parts)");
+				result += String.format(columnFormat.substring(0, 12), "", "(+ $" + String.format("%.2f", ((Repair)product).getPartsCost()) + " for parts)");
 				break;
 			case 'T':
 				result += String.format(columnFormat.substring(7, 32), product.getLabel() + 
-						" (" + ((Towing)product).getMilesTowed() + " miles @ $" + ((Towing)product).getCostPerMile() + "/mile)", 
+						" (" + ((Towing)product).getMilesTowed() + " miles @ $" + String.format("%.2f", ((Towing)product).getCostPerMile()) + "/mile)", 
 						subtotal, discount, string, total);
 				break;
 			case 'C':
 				result += String.format(columnFormat.substring(7, 32), product.getLabel() + 
-						" (" + ((Concession)product).getQuanity() + " units @ $" + ((Concession)product).getUnitCost() + "/unit)", 
+						" (" + ((Concession)product).getQuanity() + " units @ $" + String.format("%.2f", ((Concession)product).getUnitCost()) + "/unit)", 
 						subtotal, discount, string, total);
 				break;
 		}
