@@ -36,7 +36,9 @@ public class Towing extends Product {
 
 	@Override
 	public double getDiscount() {
-		// TODO Auto-generated method stub
+		if(getType() == 'F' && getType() == 'R' && getType() == 'T') {
+			return getSubtotal();
+		}
 		return 0;
 	}
 

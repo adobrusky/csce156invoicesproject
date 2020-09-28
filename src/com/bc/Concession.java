@@ -46,7 +46,10 @@ public class Concession extends Product {
 
 	@Override
 	public double getDiscount() {
-		// TODO Auto-generated method stub
+		if(getType() == 'F' && getType() == 'C') {
+			double discount = getSubtotal()*0.1;
+			return discount;
+		}
 		return 0;
 	}
 	

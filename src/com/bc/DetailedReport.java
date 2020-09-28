@@ -28,7 +28,7 @@ public class DetailedReport extends InvoiceReport {
 			result += "Products:\n" + String.format(columnFormat, "Code", "Description", " Subtotal", " Discount", " Taxes", " Total");
 			result += "  " + multiplyString("-", 140) + "\n";
 			for(Product j : i.getListOfProducts()) {
-				result += buildProductInfo(columnFormat, j, $(j.getSubtotal()), $(100), $(100), $(100)) + "\n";
+				result += buildProductInfo(columnFormat, j, $(j.getSubtotal()), $(j.getDiscount()), $(100), $(100)) + "\n";
 				
 			}
 			result += multiplyString("=", 142) + "\n";
