@@ -31,6 +31,12 @@ public class Concession extends Product {
 	public void setAssociatedRepair(String associatedRepair) {
 		this.associatedRepair = associatedRepair;
 	}
+	
+	@Override
+	public double getSubtotal() {
+		double total = (getQuanity()*unitCost);
+		return total;
+	}
 
 	@Override
 	public String toString() {

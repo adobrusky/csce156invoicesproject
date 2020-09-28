@@ -23,6 +23,13 @@ public class Towing extends Product {
 	}
 
 	@Override
+	public double getSubtotal() {
+		
+		double total = costPerMile*milesTowed;
+		return total;
+	}
+	
+	@Override
 	public String toString() {
 		return "Towing [costPerMile=" + costPerMile + ", milesTowed=" + milesTowed + "]";
 	}

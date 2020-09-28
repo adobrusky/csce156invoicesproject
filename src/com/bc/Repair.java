@@ -28,6 +28,13 @@ public class Repair extends Product {
 	public void setHoursWorked(int hoursWorked) {
 		this.hoursWorked = hoursWorked;
 	}
+	
+	@Override
+	public double getSubtotal() {		
+		
+		double total = partsCost + (hourlyLaborCost*hoursWorked);
+		return total;
+	}
 
 	@Override
 	public String toString() {

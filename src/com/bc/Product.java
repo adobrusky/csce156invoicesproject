@@ -24,6 +24,20 @@ public abstract class Product {
 		return label;
 	}
 	
+
+	
+	public double getPersonalTaxRate(double taxable) {		
+		double tax = taxable*.08;
+		return tax;
+	}
+	
+	public double getBusinessTaxRate(double taxable) {
+		double tax = taxable*.0425;
+		return tax;
+	}
+	
+	public abstract double getSubtotal();
+	
 	@Override
 	public String toString() {
 		return "Product [code=" + code + ", type=" + type + ", label=" + label + "]";

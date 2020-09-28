@@ -26,7 +26,7 @@ public class InvoiceReport extends DataConverter {
 		}
 	}
 	
-	public static String buildProductInfo(String columnFormat, Product product, String subtotal, String discount, String taxes, String total) {
+	public static String buildProductInfo(String columnFormat, Product product, double d, String discount, String string, String total) {
 		//Builds the code, description, subtotal, discount, taxes, and total column formats for the invoice details report
 		String result = "";
 		result += String.format(columnFormat.substring(0, 7), product.getCode());
@@ -34,24 +34,24 @@ public class InvoiceReport extends DataConverter {
 			case 'R':
 				result += String.format(columnFormat.substring(7), product.getLabel() + 
 						" (" + ((Rental)product).getDaysRented() + " days @ $" + ((Rental)product).getDailyCost() + "/day)", 
-						subtotal, discount, taxes, total);
+						d, discount, string, total);
 				result += String.format(columnFormat.substring(0, 12), "", "(+ $" + ((Rental)product).getCleaningFee() + " cleaning fee, -$" + ((Rental)product).getDeposit() + " deposit refund)");
 				break;
 			case 'F':
 				result += String.format(columnFormat.substring(7), product.getLabel() + 
 						" (" + ((Repair)product).getHoursWorked() + " hours of labor @ $" + ((Repair)product).getHourlyLaborCost() + "/hour)", 
-						subtotal, discount, taxes, total);
+						d, discount, string, total);
 				result += String.format(columnFormat.substring(0, 12), "", "(+ $" + ((Repair)product).getPartsCost() + " for parts)");
 				break;
 			case 'T':
 				result += String.format(columnFormat.substring(7, 32), product.getLabel() + 
 						" (" + ((Towing)product).getMilesTowed() + " miles @ $" + ((Towing)product).getCostPerMile() + "/mile)", 
-						subtotal, discount, taxes, total);
+						d, discount, string, total);
 				break;
 			case 'C':
 				result += String.format(columnFormat.substring(7, 32), product.getLabel() + 
 						" (" + ((Concession)product).getQuanity() + " units @ $" + ((Concession)product).getUnitCost() + "/unit)", 
-						subtotal, discount, taxes, total);
+						d, discount, string, total);
 				break;
 		}
 

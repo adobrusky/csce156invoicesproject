@@ -36,6 +36,14 @@ public class Rental extends Product {
 	}
 
 	@Override
+	public double getSubtotal() {
+		
+		double total = (daysRented*dailyCost) + cleaningFee - deposit;
+		return total;
+		
+	}
+	
+	@Override
 	public String toString() {
 		return "Rental [dailyCost=" + dailyCost + ", deposit=" + deposit + ", cleaningFee=" + cleaningFee
 				+ ", daysRented=" + daysRented + "]";
