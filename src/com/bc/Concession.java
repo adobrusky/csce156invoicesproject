@@ -43,5 +43,11 @@ public class Concession extends Product {
 		return "Concession [unitCost=" + unitCost + ", quanity=" + quanity + ", associatedRepair=" + associatedRepair
 				+ "]";
 	}
+
+	@Override
+	public double getDiscount() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
 	
 }

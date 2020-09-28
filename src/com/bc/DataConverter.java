@@ -93,7 +93,7 @@ public class DataConverter {
         		emails = tokens[3].split(",");
     		}
     		
-    		people.add(new Person(code, lastName, firstName, new Address(street, city, state, zip, country), emails));	
+    		people.add(new Person(code, firstName, lastName, new Address(street, city, state, zip, country), emails));	
     	}
     	
     	s.close();

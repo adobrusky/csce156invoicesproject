@@ -34,4 +34,10 @@ public class Towing extends Product {
 		return "Towing [costPerMile=" + costPerMile + ", milesTowed=" + milesTowed + "]";
 	}
 
+	@Override
+	public double getDiscount() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
 }
