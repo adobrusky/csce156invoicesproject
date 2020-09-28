@@ -29,6 +29,11 @@ public class Repair extends Product {
 		this.hoursWorked = hoursWorked;
 	}
 	
+	@Override 
+	public double getDiscount() {
+		return 0;
+	}
+	
 	@Override
 	public double getSubtotal() {		
 		

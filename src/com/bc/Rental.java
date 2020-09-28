@@ -43,6 +43,11 @@ public class Rental extends Product {
 		
 	}
 	
+	@Override 
+	public double getDiscount() {
+		return 0;
+	}
+	
 	@Override
 	public String toString() {
 		return "Rental [dailyCost=" + dailyCost + ", deposit=" + deposit + ", cleaningFee=" + cleaningFee

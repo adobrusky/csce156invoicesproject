@@ -25,16 +25,7 @@ public abstract class Product {
 	}
 	
 
-	
-	public double getPersonalTaxRate(double taxable) {		
-		double tax = taxable*.08;
-		return tax;
-	}
-	
-	public double getBusinessTaxRate(double taxable) {
-		double tax = taxable*.0425;
-		return tax;
-	}
+	public abstract double getDiscount();
 	
 	public abstract double getSubtotal();
 	
