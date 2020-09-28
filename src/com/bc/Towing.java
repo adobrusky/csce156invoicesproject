@@ -34,7 +34,6 @@ public class Towing extends Product {
 		return "Towing [costPerMile=" + costPerMile + ", milesTowed=" + milesTowed + "]";
 	}
 
-	@Override
 	public double getDiscount() {
 		if(getType() == 'F' && getType() == 'R' && getType() == 'T') {
 			return getSubtotal();

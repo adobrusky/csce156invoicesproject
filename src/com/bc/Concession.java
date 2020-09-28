@@ -6,9 +6,9 @@ public class Concession extends Product {
 	private double unitCost;
 	private int quanity;
 	private String associatedRepair;
-	
-	public Concession(String c, char t, String l, double unitCost) {
-		super(c, t, l);
+
+	public Concession(String code, char type, String label, double unitCost) {
+		super(code, type, label);
 		this.unitCost = unitCost;
 	}
 
@@ -46,9 +46,8 @@ public class Concession extends Product {
 
 	@Override
 	public double getDiscount() {
-		if(getType() == 'F' && getType() == 'C') {
-			double discount = getSubtotal()*0.1;
-			return discount;
+		if(getAssociatedRepair() != null) {
+			return getSubtotal() * 0.1;
 		}
 		return 0;
 	}
