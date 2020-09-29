@@ -38,7 +38,7 @@ public class Customer {
 		return address;
 	}
 	
-	public void setTaxRate() {
+	private void setTaxRate() {
 		if(this.type == 'B') {
 			this.taxRate = 4.25;
 		} else {

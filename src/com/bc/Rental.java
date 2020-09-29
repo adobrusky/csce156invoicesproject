@@ -44,7 +44,7 @@ public class Rental extends Product {
 	}
 	
 	@Override 
-	public double getDiscount() {
+	public double getDiscount(Invoice invoice) {
 		return 0;
 	}
 	
@@ -52,6 +52,18 @@ public class Rental extends Product {
 	public String toString() {
 		return "Rental [dailyCost=" + dailyCost + ", deposit=" + deposit + ", cleaningFee=" + cleaningFee
 				+ ", daysRented=" + daysRented + "]";
+	}
+
+	@Override
+	public double getTaxes() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public double getTotal() {
+		// TODO Auto-generated method stub
+		return 0;
 	}
 	
 

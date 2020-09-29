@@ -9,9 +9,9 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
 //jsonWrite class will take a list and output it as json
-public class jsonWrite {
+public class Json {
 	
-	public static <T> void printJSON(String filePath, List<T> list, String header) {
+	public static <T> void write(String filePath, List<T> list, String header) {
 		
 		GsonBuilder builder = new GsonBuilder();
 		builder.setPrettyPrinting();

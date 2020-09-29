@@ -5,7 +5,7 @@ import java.util.Collections;
 import java.util.List;
 
 //SummaryReport prints the summary report
-public class SummaryReport extends InvoiceReport {
+public class SummaryReport extends ReportFormat {
 	
 	public static String print(List<Invoice> invoices) {
 		

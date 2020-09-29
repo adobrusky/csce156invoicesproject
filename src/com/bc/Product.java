@@ -25,9 +25,13 @@ public abstract class Product {
 	}
 	
 
-	public abstract double getDiscount();
+	public abstract double getDiscount(Invoice invoice);
 	
 	public abstract double getSubtotal();
+	
+	public abstract double getTaxes();
+	
+	public abstract double getTotal();
 	
 	@Override
 	public String toString() {

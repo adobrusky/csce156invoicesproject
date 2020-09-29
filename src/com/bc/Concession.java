@@ -45,10 +45,22 @@ public class Concession extends Product {
 	}
 
 	@Override
-	public double getDiscount() {
-		if(getAssociatedRepair() != null) {
+	public double getDiscount(Invoice invoice) {
+		if(this.getAssociatedRepair() != null) {
 			return getSubtotal() * 0.1;
 		}
+		return 0;
+	}
+
+	@Override
+	public double getTaxes() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public double getTotal() {
+		// TODO Auto-generated method stub
 		return 0;
 	}
 	

@@ -34,10 +34,26 @@ public class Towing extends Product {
 		return "Towing [costPerMile=" + costPerMile + ", milesTowed=" + milesTowed + "]";
 	}
 
-	public double getDiscount() {
-		if(getType() == 'F' && getType() == 'R' && getType() == 'T') {
-			return getSubtotal();
+	public double getDiscount(Invoice invoice) {
+		String discountCode = "";
+		for(Product i : invoice.getListOfProducts()) {
+			discountCode += i.getType();
 		}
+		if(discountCode.contains("R") && discountCode.contains("F") && discountCode.contains("T")) {
+			return this.getSubtotal();
+		}
+		return 0;
+	}
+
+	@Override
+	public double getTaxes() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public double getTotal() {
+		// TODO Auto-generated method stub
 		return 0;
 	}
 

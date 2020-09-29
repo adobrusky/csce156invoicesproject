@@ -9,9 +9,9 @@ import com.thoughtworks.xstream.XStream;
 import com.thoughtworks.xstream.io.xml.DomDriver;
 
 //xmlWrite class will take a list and output it as xml
-public class xmlWrite {
+public class Xml {
 	
-	public static <T> void printXML(String filePath, List<T> list, String title) {
+	public static <T> void write(String filePath, List<T> list, String title) {
 		XStream xstream = new XStream(new DomDriver());
 		xstream.alias("person", com.bc.Person.class);
 		xstream.alias("customer", com.bc.Customer.class);
