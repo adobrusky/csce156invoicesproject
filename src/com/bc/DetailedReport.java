@@ -5,38 +5,6 @@ import java.util.List;
 
 //InvoiceDetails prints the invoice details report
 public class DetailedReport extends ReportFormat {
-	
-	public static String buildProductInfo(String columnFormat, Product product, String subtotal, String discount, String string, String total) {
-		//Builds the code, description, subtotal, discount, taxes, and total column formats for the invoice details report
-		String result = "";
-		result += String.format(columnFormat.substring(0, 7), product.getCode());
-		switch(product.getType()) {
-			case 'R':
-				result += String.format(columnFormat.substring(7), product.getLabel() + 
-						" (" + ((Rental)product).getDaysRented() + " days @ $" + String.format("%.2f", ((Rental)product).getDailyCost()) + "/day)", 
-						subtotal, discount, string, total);
-				result += String.format(columnFormat.substring(0, 12), "", "(+ $" + String.format("%.2f", ((Rental)product).getCleaningFee()) + " cleaning fee, -$" + String.format("%.2f", ((Rental)product).getDeposit()) + " deposit refund)");
-				break;
-			case 'F':
-				result += String.format(columnFormat.substring(7), product.getLabel() + 
-						" (" + ((Repair)product).getHoursWorked() + " hours of labor @ $" + String.format("%.2f", ((Repair)product).getHourlyLaborCost()) + "/hour)", 
-						subtotal, discount, string, total);
-				result += String.format(columnFormat.substring(0, 12), "", "(+ $" + String.format("%.2f", ((Repair)product).getPartsCost()) + " for parts)");
-				break;
-			case 'T':
-				result += String.format(columnFormat.substring(7, 32), product.getLabel() + 
-						" (" + ((Towing)product).getMilesTowed() + " miles @ $" + String.format("%.2f", ((Towing)product).getCostPerMile()) + "/mile)", 
-						subtotal, discount, string, total);
-				break;
-			case 'C':
-				result += String.format(columnFormat.substring(7, 32), product.getLabel() + 
-						" (" + ((Concession)product).getQuanity() + " units @ $" + String.format("%.2f", ((Concession)product).getUnitCost()) + "/unit)", 
-						subtotal, discount, string, total);
-				break;
-		}
-
-		return result;
-	}
 
 	public static String print(List<Invoice> invoices) {
 		
@@ -60,7 +28,8 @@ public class DetailedReport extends ReportFormat {
 			result += "Products:\n" + String.format(columnFormat, "Code", "Description", " Subtotal", " Discount", " Taxes", " Total");
 			result += "  " + multiplyString("-", 140) + "\n";
 			for(Product j : i.getListOfProducts()) {
-				result += buildProductInfo(columnFormat, j, $(j.getSubtotal()), $(j.getDiscount(i) > 0 ? -j.getDiscount(i) : 0), $(100), $(100)) + "\n";
+				result += buildProductInfo(columnFormat, j, $(j.getSubtotal()), $(j.getDiscount(i) > 0 ? -j.getDiscount(i) : 0), 
+						$(j.getTaxes(i, i.getCustomer().getTaxRate())), $(j.getTotal(i, i.getCustomer().getTaxRate()))) + "\n";
 				
 			}
 			result += multiplyString("=", 142) + "\n";

@@ -54,17 +54,4 @@ public class Rental extends Product {
 				+ ", daysRented=" + daysRented + "]";
 	}
 
-	@Override
-	public double getTaxes() {
-		// TODO Auto-generated method stub
-		return 0;
-	}
-
-	@Override
-	public double getTotal() {
-		// TODO Auto-generated method stub
-		return 0;
-	}
-	
-
 }

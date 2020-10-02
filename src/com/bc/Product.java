@@ -29,9 +29,13 @@ public abstract class Product {
 	
 	public abstract double getSubtotal();
 	
-	public abstract double getTaxes();
+	public double getTaxes(Invoice invoice, double taxRate) {
+		return (this.getSubtotal() - this.getDiscount(invoice)) * (taxRate / 100);
+	}
 	
-	public abstract double getTotal();
+	public double getTotal(Invoice invoice, double taxRate) {
+		return (this.getSubtotal() - this.getDiscount(invoice)) + (this.getSubtotal() - this.getDiscount(invoice)) * (taxRate / 100);
+	}
 	
 	@Override
 	public String toString() {

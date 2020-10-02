@@ -15,7 +15,7 @@ public class Customer {
 		this.name = name;
 		this.primaryContact = primaryContact;
 		this.address = address;
-		setTaxRate();
+		this.setTaxRate();
 	}
 
 	public String getCode() {

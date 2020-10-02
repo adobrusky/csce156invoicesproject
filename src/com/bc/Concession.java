@@ -5,7 +5,7 @@ public class Concession extends Product {
 
 	private double unitCost;
 	private int quanity;
-	private String associatedRepair;
+	private String associatedRepair = null;
 
 	public Concession(String code, char type, String label, double unitCost) {
 		super(code, type, label);
@@ -49,18 +49,6 @@ public class Concession extends Product {
 		if(this.getAssociatedRepair() != null) {
 			return getSubtotal() * 0.1;
 		}
-		return 0;
-	}
-
-	@Override
-	public double getTaxes() {
-		// TODO Auto-generated method stub
-		return 0;
-	}
-
-	@Override
-	public double getTotal() {
-		// TODO Auto-generated method stub
 		return 0;
 	}
 	

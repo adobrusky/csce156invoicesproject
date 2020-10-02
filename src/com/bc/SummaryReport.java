@@ -23,7 +23,7 @@ public class SummaryReport extends ReportFormat {
 		
 		for(Invoice i : sortedTemp) {
 			result += String.format(columnFormat, i.getInvoiceCode(), i.getOwner().getLastName() + ", " + i.getOwner().getFirstName(), 
-					i.getCustomer().getName(), $(20.25), $(20.25), $(20.25), $(20.25), $(20.25));
+					i.getCustomer().getName(), $(i.getSubtotal()), $(i.getDiscount() > 0 ? -i.getDiscount() : i.getDiscount()), $(i.getFees()), $(i.getTaxes()), $(i.getTotal()));
 		}
 		
 		//Bottom layer formatting
