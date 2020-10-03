@@ -14,7 +14,15 @@ public class Rental extends Product {
 		this.deposit = deposit;
 		this.cleaningFee = cleaningFee;
 	}
-
+	
+	public Rental(Rental old, int daysRented) {
+		super(old.getCode(), old.getType(), old.getLabel());
+		this.dailyCost = old.getDailyCost();
+		this.deposit = old.getDeposit();
+		this.cleaningFee = old.getCleaningFee();
+		this.daysRented = daysRented;
+	}
+	
 	public double getDailyCost() {
 		return dailyCost;
 	}

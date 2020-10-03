@@ -12,6 +12,11 @@ public class Repair extends Product {
 		this.partsCost = partsCost;
 		this.hourlyLaborCost = hourlyLaborCost;
 	}
+	
+	public Repair(Repair old, int hoursWorked) {
+		super(old.getCode(), old.getType(), old.getLabel());
+		
+	}
 
 	public double getPartsCost() {
 		return partsCost;

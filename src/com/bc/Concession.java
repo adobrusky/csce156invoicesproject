@@ -11,6 +11,13 @@ public class Concession extends Product {
 		super(code, type, label);
 		this.unitCost = unitCost;
 	}
+	//making a copy constructor
+	public Concession(Concession old, int quanity) {
+		super(old.getCode(), old.getType(), old.getLabel());
+		this.unitCost = old.getUnitCost();
+		this.associatedRepair = old.getAssociatedRepair();
+		this.quanity = quanity;
+	}
 
 	public double getUnitCost() {
 		return unitCost;

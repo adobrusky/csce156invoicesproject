@@ -37,6 +37,41 @@ public abstract class Product {
 		return (this.getSubtotal() - this.getDiscount(invoice)) + (this.getSubtotal() - this.getDiscount(invoice)) * (taxRate / 100);
 	}
 	
+	//This is my initial thought on how to do this but seems like alot more work than it should be
+//	public double getItemTotalsSubtotal(Invoice invoice) {
+//		double ItemTotalsSubtotal = 0;
+//		while(invoice.getSubtotal() != 0) {
+//			ItemTotalsSubtotal =+ invoice.getSubtotal();
+//		}
+//		return ItemTotalsSubtotal;
+//	}
+//	
+//	public double getItemTotalsDiscount(Invoice invoice) {
+//		double ItemTotalsDiscount = 0;
+//		while(invoice.getDiscount() != 0) {
+//			ItemTotalsDiscount =+ invoice.getDiscount();
+//		}
+//		return ItemTotalsDiscount;
+//	}
+//	
+//	public double getItemTotalsTaxes(Invoice invoice) {
+//		double ItemTotalsTaxes = 0;
+//		while(invoice.getTaxes() != 0) {
+//			ItemTotalsTaxes =+ invoice.getTaxes();
+//		}
+//		return ItemTotalsTaxes;
+//	}
+//	
+//	public double getItemTotalsTotal(Invoice invoice) {
+//		double ItemTotalsTaxes = 0;
+//		while(invoice.getTotal() != 0) {
+//			ItemTotalsTaxes =+ invoice.getTotal();
+//		}
+//
+//		return ItemTotalsTaxes;
+//	}
+	
+
 	@Override
 	public String toString() {
 		return "Product [code=" + code + ", type=" + type + ", label=" + label + "]";

@@ -38,8 +38,7 @@ public class ParseProducts {
     	List<Product> products = new ArrayList<Product>(productSize);
     	
     	while(s.hasNext()) {
-    		String line = s.nextLine();
-    		String tokens[] = line.split(";");
+    		String tokens[] = s.nextLine().split(";");
     		String code = tokens[0];
     		char type = tokens[1].charAt(0);
     		String label = tokens[2];
