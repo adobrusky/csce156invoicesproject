@@ -15,6 +15,7 @@ public class Rental extends Product {
 		this.cleaningFee = cleaningFee;
 	}
 	
+	//Copy constructor
 	public Rental(Rental old, int daysRented) {
 		super(old.getCode(), old.getType(), old.getLabel());
 		this.dailyCost = old.getDailyCost();

@@ -8,7 +8,7 @@ import java.util.List;
 import com.thoughtworks.xstream.XStream;
 import com.thoughtworks.xstream.io.xml.DomDriver;
 
-//xmlWrite class will take a list and output it as xml
+//Xml class will take a list and output it as xml
 public class Xml {
 	
 	public static <T> void write(String filePath, List<T> list, String title) {

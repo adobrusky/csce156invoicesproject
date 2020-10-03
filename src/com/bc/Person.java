@@ -2,6 +2,7 @@ package com.bc;
 
 import java.util.Arrays;
 
+//Person class holds all of the information regarding a person
 public class Person {
 	private String code;
 	private String firstName;

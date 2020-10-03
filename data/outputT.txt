@@ -2,12 +2,12 @@ Executive Summary Report:
 
 Code      Owner                         Customer Account               Subtotal     Discounts    Fees         Taxes        Total       
 ---------------------------------------------------------------------------------------------------------------------------------------
-INV002    Rosina, Jordanna              Ainyx                         $     20.25  $     20.25  $     20.25  $     20.25  $     20.25  
-INV001    Wickens, Wendi                Brightbean                    $     20.25  $     20.25  $     20.25  $     20.25  $     20.25  
-INV003    Mattusevich, Maximilian       Rhycero                       $     20.25  $     20.25  $     20.25  $     20.25  $     20.25  
-INV004    Leitch, Fayth                 Zoozzy                        $     20.25  $     20.25  $     20.25  $     20.25  $     20.25  
+INV002    Rosina, Jordanna              Ainyx                         $   1171.21  $      0.00  $      0.00  $     93.70  $   1264.91  
+INV001    Wickens, Wendi                Brightbean                    $    899.50  $     -1.05  $     75.50  $     38.18  $   1012.13  
+INV003    Mattusevich, Maximilian       Rhycero                       $    169.90  $     -2.99  $     75.50  $      7.09  $    249.50  
+INV004    Leitch, Fayth                 Zoozzy                        $    108.80  $      0.00  $      0.00  $      8.70  $    117.50  
 =======================================================================================================================================
-TOTALS                                                                $     32.00  $     32.00  $     32.00  $     32.00  $     32.00  
+TOTALS                                                                $   2349.41  $     -4.04  $    151.00  $    147.68  $   2644.05  
 
 
 
@@ -27,15 +27,15 @@ Customer:
 Products:
   Code                Description                                                            Subtotal     Discount     Taxes        Total       
   --------------------------------------------------------------------------------------------------------------------------------------------
-  rtog8jrtg8j4        New Tires (2 hours of labor @ $50.00/hour)                            $    749.00  $      0.00  $    100.00  $    100.00  
+  rtog8jrtg8j4        New Tires (2 hours of labor @ $50.00/hour)                            $    749.00  $      0.00  $     31.83  $    780.83  
                       (+ $649.00 for parts)                                                 
-  hko234              Oil Change (2 hours of labor @ $20.00/hour)                           $    140.00  $      0.00  $    100.00  $    100.00  
+  hko234              Oil Change (2 hours of labor @ $20.00/hour)                           $    140.00  $      0.00  $      5.95  $    145.95  
                       (+ $100.00 for parts)                                                 
-  4502ghnt0           Brownie (14 units @ $3.50/unit)                                       $     49.00  $     -4.90  $    100.00  $    100.00  
+  4502ghnt0           Brownie (3 units @ $3.50/unit)                                        $     10.50  $     -1.05  $      0.40  $      9.85  
 ==============================================================================================================================================
-ITEM TOTALS:                                                                                $     32.00  $     32.00  $     32.00  $     32.00  
+ITEM TOTALS:                                                                                $    899.50  $     -1.05  $     38.18  $    936.63  
 BUSINESS ACCOUNT FEE:                                                                                                              $     75.50  
-GRAND TOTAL:                                                                                                                       $     32.00  
+GRAND TOTAL:                                                                                                                       $   1012.13  
 
 
 	THANK YOU FOR DOING BUSINESS WITH US!
@@ -57,12 +57,12 @@ Customer:
 Products:
   Code                Description                                                            Subtotal     Discount     Taxes        Total       
   --------------------------------------------------------------------------------------------------------------------------------------------
-  519gynht7           Towing < 20 (15 miles @ $11.50/mile)                                  $    172.50  $      0.00  $    100.00  $    100.00  
-  7erg9197            Volkswagen (5 days @ $126.57/day)                                     $    998.71  $      0.00  $    100.00  $    100.00  
+  519gynht7           Towing < 20 (15 miles @ $11.50/mile)                                  $    172.50  $      0.00  $     13.80  $    186.30  
+  7erg9197            Volkswagen (5 days @ $126.57/day)                                     $    998.71  $      0.00  $     79.90  $   1078.61  
                       (+ $535.86 cleaning fee, -$170.00 deposit refund)                     
 ==============================================================================================================================================
-ITEM TOTALS:                                                                                $     32.00  $     32.00  $     32.00  $     32.00  
-GRAND TOTAL:                                                                                                                       $     32.00  
+ITEM TOTALS:                                                                                $   1171.21  $      0.00  $     93.70  $   1264.91  
+GRAND TOTAL:                                                                                                                       $   1264.91  
 
 
 	THANK YOU FOR DOING BUSINESS WITH US!
@@ -84,13 +84,13 @@ Customer:
 Products:
   Code                Description                                                            Subtotal     Discount     Taxes        Total       
   --------------------------------------------------------------------------------------------------------------------------------------------
-  hko234              Oil Change (2 hours of labor @ $20.00/hour)                           $    140.00  $      0.00  $    100.00  $    100.00  
+  hko234              Oil Change (2 hours of labor @ $20.00/hour)                           $    140.00  $      0.00  $      5.95  $    145.95  
                       (+ $100.00 for parts)                                                 
-  31ghng93            Large Soda (20 units @ $2.99/unit)                                    $     59.80  $     -5.98  $    100.00  $    100.00  
+  31ghng93            Large Soda (10 units @ $2.99/unit)                                    $     29.90  $     -2.99  $      1.14  $     28.05  
 ==============================================================================================================================================
-ITEM TOTALS:                                                                                $     32.00  $     32.00  $     32.00  $     32.00  
+ITEM TOTALS:                                                                                $    169.90  $     -2.99  $      7.09  $    174.00  
 BUSINESS ACCOUNT FEE:                                                                                                              $     75.50  
-GRAND TOTAL:                                                                                                                       $     32.00  
+GRAND TOTAL:                                                                                                                       $    249.50  
 
 
 	THANK YOU FOR DOING BUSINESS WITH US!
@@ -112,11 +112,11 @@ Customer:
 Products:
   Code                Description                                                            Subtotal     Discount     Taxes        Total       
   --------------------------------------------------------------------------------------------------------------------------------------------
-  4502ghnt0           Brownie (14 units @ $3.50/unit)                                       $     49.00  $     -4.90  $    100.00  $    100.00  
-  31ghng93            Large Soda (20 units @ $2.99/unit)                                    $     59.80  $     -5.98  $    100.00  $    100.00  
+  4502ghnt0           Brownie (14 units @ $3.50/unit)                                       $     49.00  $      0.00  $      3.92  $     52.92  
+  31ghng93            Large Soda (20 units @ $2.99/unit)                                    $     59.80  $      0.00  $      4.78  $     64.58  
 ==============================================================================================================================================
-ITEM TOTALS:                                                                                $     32.00  $     32.00  $     32.00  $     32.00  
-GRAND TOTAL:                                                                                                                       $     32.00  
+ITEM TOTALS:                                                                                $    108.80  $      0.00  $      8.70  $    117.50  
+GRAND TOTAL:                                                                                                                       $    117.50  
 
 
 	THANK YOU FOR DOING BUSINESS WITH US!

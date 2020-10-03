@@ -29,7 +29,7 @@ public class ParseCustomers {
 		//Scans info from Customers.dat and parses it into objects of customer and returns a list of customers
 		Scanner s = null;
     	try {
-			s = new Scanner(new File("data/CustomersE.dat"));
+			s = new Scanner(new File("data/Customers.dat"));
 		} catch (FileNotFoundException e) {
 			throw new RuntimeException(e);
 		}

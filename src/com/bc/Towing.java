@@ -9,6 +9,13 @@ public class Towing extends Product {
 		super(code, type, label);
 		this.costPerMile = costPerMile;
 	}
+	
+	//Copy Constructor
+	public Towing(Towing old, int milesTowed) {
+		super(old.getCode(), old.getType(), old.getLabel());
+		this.costPerMile = old.getCostPerMile();
+		this.milesTowed = milesTowed;
+	}
 
 	public double getCostPerMile() {
 		return costPerMile;
@@ -40,7 +47,7 @@ public class Towing extends Product {
 			discountCode += i.getType();
 		}
 		if(discountCode.contains("R") && discountCode.contains("F") && discountCode.contains("T")) {
-			return this.getSubtotal();
+			return this.getSubtotal() * -1;
 		}
 		return 0;
 	}

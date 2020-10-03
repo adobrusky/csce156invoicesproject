@@ -17,6 +17,8 @@ public class DetailedReport extends ReportFormat {
 		
 		//Body formatting
 		for(Invoice i : invoices) {
+			
+			//Owner and Customer info formatting
 			result += "Invoice " + i.getInvoiceCode() + "\n";
 			result += multiplyString("-", 50) + "\n";
 			result += "Owner:\n" + String.format("\t%s, %s\n\t%s\n\t%s\n\t%s, %s %s %s\n", i.getOwner().getLastName(), i.getOwner().getFirstName(), 
@@ -27,21 +29,36 @@ public class DetailedReport extends ReportFormat {
 					i.getCustomer().getAddress().getState(), i.getCustomer().getAddress().getCountry(), i.getCustomer().getAddress().getZip());
 			result += "Products:\n" + String.format(columnFormat, "Code", "Description", " Subtotal", " Discount", " Taxes", " Total");
 			result += "  " + multiplyString("-", 140) + "\n";
+			
+			//Product list formatting
+			double subtotal = 0;
+			double discount = 0;
+			double taxes = 0;
+			double total = 0;
+			double grandTotal = 0;
 			for(Product j : i.getListOfProducts()) {
-				result += buildProductInfo(columnFormat, j, $(j.getSubtotal()), $(j.getDiscount(i) > 0 ? -j.getDiscount(i) : 0), 
+				subtotal += j.getSubtotal();
+				discount += j.getDiscount(i);
+				taxes += j.getTaxes(i, i.getCustomer().getTaxRate());
+				total += j.getTotal(i, i.getCustomer().getTaxRate());
+				result += buildProductInfo(columnFormat, j, $(j.getSubtotal()), $(j.getDiscount(i)), 
 						$(j.getTaxes(i, i.getCustomer().getTaxRate())), $(j.getTotal(i, i.getCustomer().getTaxRate()))) + "\n";
-				
 			}
+			
+			//Bottom totals formatting
 			result += multiplyString("=", 142) + "\n";
-			result += String.format("%-90s  %-13s%-13s%-13s%-13s\n", "ITEM TOTALS:", $(32), $(32), $(32), $(32));
+			result += String.format("%-90s  %-13s%-13s%-13s%-13s\n", "ITEM TOTALS:", $(subtotal), $(discount), $(taxes), $(total));
+			
+			grandTotal = total;
 			if(i.getCustomer().getType() == 'B') {
 				result += String.format("%-129s  %-13s\n", "BUSINESS ACCOUNT FEE:", $(75.50));
-			} else {
-				if(i.getCustomer().getPrimaryContact().getEmails().length > 1) {
-					result += String.format("%-129s  %-13s\n", "LOYAL CUSTOMER DISCOUNT (5% OFF):", $(-65));
-				}
+				grandTotal += 75.50;
+			} else if(i.getCustomer().getType() == 'P' && i.getCustomer().getPrimaryContact().getEmails().length >= 2) {
+				result += String.format("%-129s  %-13s\n", "LOYAL CUSTOMER DISCOUNT (5% OFF):", $(i.getLoyaltyDiscount()));
+				grandTotal += i.getLoyaltyDiscount();
 			}
-			result += String.format("%-129s  %-13s\n", "GRAND TOTAL:", $(32));
+			
+			result += String.format("%-129s  %-13s\n", "GRAND TOTAL:", $(grandTotal));
 			result += "\n\n\tTHANK YOU FOR DOING BUSINESS WITH US!\n\n\n\n" + multiplyString("=+", 58) + "\n";
 		}
 		return result;

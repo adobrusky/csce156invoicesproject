@@ -46,6 +46,7 @@ public class Invoice implements Comparable<Invoice> {
 		for(Product i : this.listOfProducts) {
 			discount += i.getDiscount(this);
 		}
+		discount += this.getLoyaltyDiscount();
 		return discount;
 	}
 	
@@ -74,8 +75,8 @@ public class Invoice implements Comparable<Invoice> {
 	}
 	
 	public double getLoyaltyDiscount() {
-		if(this.getCustomer().getPrimaryContact().getEmails().length > 1) {
-			return this.getTotal() * 0.05;
+		if(this.getCustomer().getType() == 'P' && this.getCustomer().getPrimaryContact().getEmails().length >= 2) {
+			return (this.getTotal() - this.getFees()) * -0.05;
 		} else {
 			return 0;
 		}

@@ -30,7 +30,7 @@ public class ParsePersons {
 		//Scans info from Persons.dat and parses it into objects of people and returns a list of people
 		Scanner s = null;
     	try {
-			s = new Scanner(new File("data/PersonsE.dat"));
+			s = new Scanner(new File("data/Persons.dat"));
 		} catch (FileNotFoundException e) {
 			throw new RuntimeException(e);
 		}

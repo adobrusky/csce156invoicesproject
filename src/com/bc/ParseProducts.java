@@ -29,7 +29,7 @@ public class ParseProducts {
 		//Scans info from Products.dat and parses it into objects of products and returns a list of products
 		Scanner s = null;
     	try {
-			s = new Scanner(new File("data/ProductsE.dat"));
+			s = new Scanner(new File("data/Products.dat"));
 		} catch (FileNotFoundException e) {
 			throw new RuntimeException(e);
 		}

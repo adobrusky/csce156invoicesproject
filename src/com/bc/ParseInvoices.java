@@ -18,7 +18,7 @@ public class ParseInvoices {
 		//Scans info from Invoices.dat and parses it into objects of invoice and returns a list of invoices
 		Scanner s = null;
     	try {
-			s = new Scanner(new File("data/InvoicesE.dat"));
+			s = new Scanner(new File("data/Invoices.dat"));
 		} catch (FileNotFoundException e) {
 			throw new RuntimeException(e);
 		}
@@ -40,19 +40,20 @@ public class ParseInvoices {
     			for(int j = 0; j < productInfo.length; j++) {
     				switch(product.getType()) {
     					case 'R':
-    						((Rental)product).setDaysRented(Integer.parseInt(productInfo[1]));
+    						product = new Rental((Rental)product, Integer.parseInt(productInfo[1]));
     						break;
     					case 'F':
-    						((Repair)product).setHoursWorked(Integer.parseInt(productInfo[1]));
+    						product = new Repair((Repair)product, Integer.parseInt(productInfo[1]));
     						break;
     					case 'C':
-    						((Concession)product).setQuanity(Integer.parseInt(productInfo[1]));
     						if(productInfo.length == 3) {
-        						((Concession)product).setAssociatedRepair(productInfo[2]);
+        						product = new Concession((Concession)product, Integer.parseInt(productInfo[1]), productInfo[2]);
+    						} else {
+    							product = new Concession((Concession)product, Integer.parseInt(productInfo[1]));
     						}
     						break;
     					case 'T':
-    						((Towing)product).setMilesTowed(Integer.parseInt(productInfo[1]));
+    						product = new Towing((Towing)product, Integer.parseInt(productInfo[1]));
     						break;
     				}
     				

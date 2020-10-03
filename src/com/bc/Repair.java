@@ -13,8 +13,12 @@ public class Repair extends Product {
 		this.hourlyLaborCost = hourlyLaborCost;
 	}
 	
+	//Copy Constructor
 	public Repair(Repair old, int hoursWorked) {
 		super(old.getCode(), old.getType(), old.getLabel());
+		this.partsCost = old.getPartsCost();
+		this.hourlyLaborCost = old.getHourlyLaborCost();
+		this.hoursWorked = hoursWorked;
 		
 	}
 
