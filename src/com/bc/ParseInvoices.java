@@ -40,20 +40,20 @@ public class ParseInvoices {
     			for(int j = 0; j < productInfo.length; j++) {
     				switch(product.getType()) {
     					case 'R':
-    						product = new Rental((Rental)product, Integer.parseInt(productInfo[1]));
+    						product = new Rental((Rental)product, Double.parseDouble(productInfo[1]));
     						break;
     					case 'F':
-    						product = new Repair((Repair)product, Integer.parseInt(productInfo[1]));
+    						product = new Repair((Repair)product, Double.parseDouble(productInfo[1]));
     						break;
     					case 'C':
     						if(productInfo.length == 3) {
-        						product = new Concession((Concession)product, Integer.parseInt(productInfo[1]), productInfo[2]);
+        						product = new Concession((Concession)product, Double.parseDouble(productInfo[1]), productInfo[2]);
     						} else {
-    							product = new Concession((Concession)product, Integer.parseInt(productInfo[1]));
+    							product = new Concession((Concession)product, Double.parseDouble(productInfo[1]));
     						}
     						break;
     					case 'T':
-    						product = new Towing((Towing)product, Integer.parseInt(productInfo[1]));
+    						product = new Towing((Towing)product, Double.parseDouble(productInfo[1]));
     						break;
     				}
     				

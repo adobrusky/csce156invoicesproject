@@ -6,8 +6,7 @@ public class InvoiceReport {
 	public static void main(String[] args) {
 		
 		//Output the summary report and invoice details report to the output.txt file
-		Report.write(ParseInvoices.getInvoices(), "data/output.txt");
-		
+		Report.write(ParseInvoices.getInvoices(), "data/output.txt");		
 	}
 
 }

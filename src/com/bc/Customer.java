@@ -15,7 +15,7 @@ public class Customer {
 		this.name = name;
 		this.primaryContact = primaryContact;
 		this.address = address;
-		this.setTaxRate();
+		
 	}
 
 	public String getCode() {
@@ -38,13 +38,6 @@ public class Customer {
 		return address;
 	}
 	
-	private void setTaxRate() {
-		if(this.type == 'B') {
-			this.taxRate = 4.25;
-		} else {
-			this.taxRate = 8;
-		}
-	}
 	
 	public double getTaxRate() {
 		return taxRate;

@@ -6,7 +6,7 @@ public class Rental extends Product {
 	private double dailyCost;
 	private double deposit;
 	private double cleaningFee;
-	private int daysRented; 
+	private double daysRented; 
 	
 	public Rental(String code, char type, String label, double dailyCost, double deposit, double cleaningFee) {
 		super(code, type, label);
@@ -16,12 +16,12 @@ public class Rental extends Product {
 	}
 	
 	//Copy constructor
-	public Rental(Rental old, int daysRented) {
+	public Rental(Rental old, double d) {
 		super(old.getCode(), old.getType(), old.getLabel());
 		this.dailyCost = old.getDailyCost();
 		this.deposit = old.getDeposit();
 		this.cleaningFee = old.getCleaningFee();
-		this.daysRented = daysRented;
+		this.daysRented = d;
 	}
 	
 	public double getDailyCost() {
@@ -36,13 +36,10 @@ public class Rental extends Product {
 		return cleaningFee;
 	}
 
-	public int getDaysRented() {
+	public double getDaysRented() {
 		return daysRented;
 	}
 
-	public void setDaysRented(int daysRented) {
-		this.daysRented = daysRented;
-	}
 
 	@Override
 	public double getSubtotal() {

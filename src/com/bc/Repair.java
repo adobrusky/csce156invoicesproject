@@ -5,7 +5,7 @@ public class Repair extends Product {
 	
 	private double partsCost;
 	private double hourlyLaborCost;
-	private int hoursWorked;
+	private double hoursWorked;
 
 	public Repair(String code, char type, String label, double partsCost, double hourlyLaborCost) {
 		super(code, type, label);
@@ -14,11 +14,11 @@ public class Repair extends Product {
 	}
 	
 	//Copy Constructor
-	public Repair(Repair old, int hoursWorked) {
+	public Repair(Repair old, double d) {
 		super(old.getCode(), old.getType(), old.getLabel());
 		this.partsCost = old.getPartsCost();
 		this.hourlyLaborCost = old.getHourlyLaborCost();
-		this.hoursWorked = hoursWorked;
+		this.hoursWorked = d;
 		
 	}
 
@@ -30,13 +30,10 @@ public class Repair extends Product {
 		return hourlyLaborCost;
 	}
 	
-	public int getHoursWorked() {
+	public double getHoursWorked() {
 		return hoursWorked;
 	}
 
-	public void setHoursWorked(int hoursWorked) {
-		this.hoursWorked = hoursWorked;
-	}
 	
 	@Override 
 	public double getDiscount(Invoice invoice) {

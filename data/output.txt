@@ -2,12 +2,12 @@ Executive Summary Report:
 
 Code      Owner                         Customer Account               Subtotal     Discounts    Fees         Taxes        Total       
 ---------------------------------------------------------------------------------------------------------------------------------------
-INV002    Jordanna, Rosina              Ainyx                         $   1171.21  $      0.00  $      0.00  $     93.66  $   1264.87  
-INV001    Wendi, Wickens                Brightbean                    $    938.00  $     -4.90  $     75.50  $     39.65  $   1047.42  
-INV003    Maximilian, Mattusevich       Rhycero                       $    199.80  $     -5.98  $     75.50  $      8.24  $    202.06  
-INV004    Fayth, Leitch                 Zoozzy                        $    108.80  $      0.00  $      0.00  $      8.70  $    117.50  
+INV002    Rosina, Jordanna              Ainyx                         $   1171.21  $      0.00  $      0.00  $      0.00  $   1171.21  
+INV001    Wickens, Wendi                Brightbean                    $    899.50  $     -1.05  $     75.50  $      0.00  $    973.95  
+INV003    Mattusevich, Maximilian       Rhycero                       $    169.90  $     -2.99  $     75.50  $      0.00  $    242.41  
+INV004    Leitch, Fayth                 Zoozzy                        $    108.80  $      0.00  $      0.00  $      0.00  $    108.80  
 =======================================================================================================================================
-TOTALS                                                                $   2417.81  $    -10.88  $    151.00  $    150.25  $   2631.85  
+TOTALS                                                                $   2349.41  $     -4.04  $    151.00  $      0.00  $   2496.37  
 
 
 
@@ -16,7 +16,7 @@ Invoice Details:
 Invoice INV001
 --------------------------------------------------
 Owner:
-	Wendi, Wickens
+	Wickens, Wendi
 	[wwickens0@last.fm]
 	750 Barby Terrace
 	Lancaster, PA USA 17622
@@ -27,15 +27,15 @@ Customer:
 Products:
   Code                Description                                                            Subtotal     Discount     Taxes        Total       
   --------------------------------------------------------------------------------------------------------------------------------------------
-  rtog8jrtg8j4        New Tires (2 hours of labor @ $50.0/hour)                             $    749.00  $      0.00  $     31.83  $    780.83  
-                      (+ $649.0 for parts)                                                  
-  hko234              Oil Change (2 hours of labor @ $20.0/hour)                            $    140.00  $      0.00  $      5.95  $    145.95 
-                      (+ $100.0 for parts)                                                  
-  4502ghnt0           Brownie (14 units @ $3.5/unit)                                        $     49.00  $     -4.90  $      1.87  $     45.97  
+  rtog8jrtg8j4        New Tires (2.0 hours of labor @ $50.00/hour)                          $    749.00  $      0.00  $      0.00  $    749.00  
+                      (+ $649.00 for parts)                                                 
+  hko234              Oil Change (2.0 hours of labor @ $20.00/hour)                         $    140.00  $      0.00  $      0.00  $    140.00  
+                      (+ $100.00 for parts)                                                 
+  4502ghnt0           Brownie (3.0 units @ $3.50/unit)                                      $     10.50  $     -1.05  $      0.00  $      9.45  
 ==============================================================================================================================================
-ITEM TOTALS:                                                                                $    938.00  $     -4.90  $     39.65  $    971.92 
+ITEM TOTALS:                                                                                $    899.50  $     -1.05  $      0.00  $    898.45  
 BUSINESS ACCOUNT FEE:                                                                                                              $     75.50  
-GRAND TOTAL:                                                                                                                       $   1047.42  
+GRAND TOTAL:                                                                                                                       $    973.95  
 
 
 	THANK YOU FOR DOING BUSINESS WITH US!
@@ -46,7 +46,7 @@ GRAND TOTAL:                                                                    
 Invoice INV002
 --------------------------------------------------
 Owner:
-	Jordanna, Rosina
+	Rosina, Jordanna
 	[jrosina1@msu.edu]
 	8 Becker Avenue
 	Boise, ID USA 83711
@@ -57,12 +57,12 @@ Customer:
 Products:
   Code                Description                                                            Subtotal     Discount     Taxes        Total       
   --------------------------------------------------------------------------------------------------------------------------------------------
-  519gynht7           Towing < 20 (15 miles @ $11.5/mile)                                   $    172.50  $      0.00  $     13.76  $    186.26  
-  7erg9197            Volkswagen (5 days @ $126.57/day)                                     $    998.71  $      0.00  $     79.90  $   1078.61  
-                      (+ $535.86 cleaning fee, -$170.0 deposit refund)                       
+  519gynht7           Towing < 20 (15.0 miles @ $11.50/mile)                                $    172.50  $      0.00  $      0.00  $    172.50  
+  7erg9197            Volkswagen (5.0 days @ $126.57/day)                                   $    998.71  $      0.00  $      0.00  $    998.71  
+                      (+ $535.86 cleaning fee, -$170.00 deposit refund)                     
 ==============================================================================================================================================
-ITEM TOTALS:                                                                                $   1171.21  $      0.00  $     93.66  $   1264.87  
-GRAND TOTAL:                                                                                                                       $   1264.87  
+ITEM TOTALS:                                                                                $   1171.21  $      0.00  $      0.00  $   1171.21  
+GRAND TOTAL:                                                                                                                       $   1171.21  
 
 
 	THANK YOU FOR DOING BUSINESS WITH US!
@@ -73,7 +73,7 @@ GRAND TOTAL:                                                                    
 Invoice INV003
 --------------------------------------------------
 Owner:
-	Maximilian, Mattusevich
+	Mattusevich, Maximilian
 	[mmattusevich2@comsenz.com]
 	580 Pankratz Street
 	Tampa, FL USA 33694
@@ -84,13 +84,13 @@ Customer:
 Products:
   Code                Description                                                            Subtotal     Discount     Taxes        Total       
   --------------------------------------------------------------------------------------------------------------------------------------------
-  hko234              Oil Change (2 hours of labor @ $20.0/hour)                            $    140.00  $      0.00  $      5.95  $    145.95  
-                      (+ $100.0 for parts)                                                  
-  31ghng93            Large Soda (20 units @ $2.99/unit)                                    $     59.80  $     -5.98  $      2.29  $     56.11  
+  hko234              Oil Change (2.0 hours of labor @ $20.00/hour)                         $    140.00  $      0.00  $      0.00  $    140.00  
+                      (+ $100.00 for parts)                                                 
+  31ghng93            Large Soda (10.0 units @ $2.99/unit)                                  $     29.90  $     -2.99  $      0.00  $     26.91  
 ==============================================================================================================================================
-ITEM TOTALS:                                                                                $    199.80  $     -5.98  $      8.24  $    202.06  
-BUSINESS ACCOUNT FEE:                                                                                                              $     75.50
-GRAND TOTAL:                                                                                                                       $    277.56  
+ITEM TOTALS:                                                                                $    169.90  $     -2.99  $      0.00  $    166.91  
+BUSINESS ACCOUNT FEE:                                                                                                              $     75.50  
+GRAND TOTAL:                                                                                                                       $    242.41  
 
 
 	THANK YOU FOR DOING BUSINESS WITH US!
@@ -101,7 +101,7 @@ GRAND TOTAL:                                                                    
 Invoice INV004
 --------------------------------------------------
 Owner:
-	Fayth, Leitch
+	Leitch, Fayth
 	[fleitch4@blogs.com]
 	095 Monument Crossing
 	Miami, FL USA 33147
@@ -112,11 +112,11 @@ Customer:
 Products:
   Code                Description                                                            Subtotal     Discount     Taxes        Total       
   --------------------------------------------------------------------------------------------------------------------------------------------
-  4502ghnt0           Brownie (14 units @ $3.5/unit)                                        $     49.00  $      0.00  $      3.92  $     52.92  
-  31ghng93            Large Soda (20 units @ $2.99/unit)                                    $     59.80  $      0.00  $      4.78  $     64.58  
+  4502ghnt0           Brownie (14.0 units @ $3.50/unit)                                     $     49.00  $      0.00  $      0.00  $     49.00  
+  31ghng93            Large Soda (20.0 units @ $2.99/unit)                                  $     59.80  $      0.00  $      0.00  $     59.80  
 ==============================================================================================================================================
-ITEM TOTALS:                                                                                $    108.80  $      0.00  $      8.70  $    117.50  
-GRAND TOTAL:                                                                                                                       $    117.50   
+ITEM TOTALS:                                                                                $    108.80  $      0.00  $      0.00  $    108.80  
+GRAND TOTAL:                                                                                                                       $    108.80  
 
 
 	THANK YOU FOR DOING BUSINESS WITH US!
@@ -124,4 +124,3 @@ GRAND TOTAL:                                                                    
 
 
 =+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+
-

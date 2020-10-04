@@ -3,7 +3,7 @@ package com.bc;
 //Towing class holds all of the information regarding a towing product
 public class Towing extends Product {
 	private double costPerMile;
-	private int milesTowed;
+	private double milesTowed;
 
 	public Towing(String code, char type, String label, double costPerMile) {
 		super(code, type, label);
@@ -11,17 +11,17 @@ public class Towing extends Product {
 	}
 	
 	//Copy Constructor
-	public Towing(Towing old, int milesTowed) {
+	public Towing(Towing old, double d) {
 		super(old.getCode(), old.getType(), old.getLabel());
 		this.costPerMile = old.getCostPerMile();
-		this.milesTowed = milesTowed;
+		this.milesTowed = d;
 	}
 
 	public double getCostPerMile() {
 		return costPerMile;
 	}
 
-	public int getMilesTowed() {
+	public double getMilesTowed() {
 		return milesTowed;
 	}
 

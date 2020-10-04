@@ -4,7 +4,7 @@ package com.bc;
 public class Concession extends Product {
 
 	private double unitCost;
-	private int quanity;
+	private double quanity;
 	private String associatedRepair = null;
 
 	public Concession(String code, char type, String label, double unitCost) {
@@ -13,16 +13,16 @@ public class Concession extends Product {
 	}
 	
 	//Copy Constructors
-	public Concession(Concession old, int quanity) {
+	public Concession(Concession old, double d) {
 		super(old.getCode(), old.getType(), old.getLabel());
 		this.unitCost = old.getUnitCost();
-		this.quanity = quanity;
+		this.quanity = d;
 	}
 	
-	public Concession(Concession old, int quanity, String associatedRepair) {
+	public Concession(Concession old, double d, String associatedRepair) {
 		super(old.getCode(), old.getType(), old.getLabel());
 		this.unitCost = old.getUnitCost();
-		this.quanity = quanity;
+		this.quanity = d;
 		this.associatedRepair = associatedRepair;
 	}
 
@@ -30,7 +30,7 @@ public class Concession extends Product {
 		return unitCost;
 	}
 	
-	public int getQuanity() {
+	public double getQuanity() {
 		return quanity;
 	}
 
