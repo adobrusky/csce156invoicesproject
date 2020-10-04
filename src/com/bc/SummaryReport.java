@@ -1,10 +1,14 @@
+/**
+ * Authors: Austin Dobrusky, Mark Forgét
+ * Date:10/4/20
+ * Description: prints the summary report
+ */
 package com.bc;
 
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-//SummaryReport prints the summary report
 public class SummaryReport extends ReportFormat {
 	
 	public static String print(List<Invoice> invoices) {

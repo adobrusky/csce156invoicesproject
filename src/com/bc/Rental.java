@@ -1,6 +1,10 @@
+/**
+ * Authors: Austin Dobrusky, Mark Forgét
+ * Date:10/4/20
+ * Description: holds all of the information regarding a rental product
+ */
 package com.bc;
 
-//Rental class holds all of the information regarding a rental product
 public class Rental extends Product {
 	
 	private double dailyCost;

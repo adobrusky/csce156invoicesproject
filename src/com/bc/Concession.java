@@ -1,6 +1,10 @@
+/**
+ * Authors: Austin Dobrusky, Mark Forgét
+ * Date:10/4/20
+ * Description: subclass of product class and describes concession product
+ */
 package com.bc;
 
-//Concession class represents a concession product
 public class Concession extends Product {
 
 	private double unitCost;

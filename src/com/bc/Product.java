@@ -1,6 +1,10 @@
+/**
+ * Authors: Austin Dobrusky, Mark Forgét
+ * Date:10/4/20
+ * Description: holds all of the information regarding a product
+ */
 package com.bc;
 
-//Product class holds all of the information regarding a product
 public abstract class Product {
 	private String code;
 	private char type;

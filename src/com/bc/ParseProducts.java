@@ -1,3 +1,8 @@
+/**
+ * Authors: Austin Dobrusky, Mark Forgét
+ * Date:10/4/20
+ * Description: parses the Product.dat and stores the parsed list
+ */
 package com.bc;
 
 import java.io.File;
@@ -6,7 +11,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
-//ParseProducts class parses the Products.dat and stores the parsed list
 public class ParseProducts {
 	
 	private static List<Product> products = parseProducts();

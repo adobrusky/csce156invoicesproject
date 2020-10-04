@@ -1,6 +1,10 @@
+/**
+ * Authors: Austin Dobrusky, Mark Forgét
+ * Date:10/4/20
+ * Description: holds all of the information regarding a towing product
+ */
 package com.bc;
 
-//Towing class holds all of the information regarding a towing product
 public class Towing extends Product {
 	private double costPerMile;
 	private double milesTowed;

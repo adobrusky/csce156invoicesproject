@@ -1,6 +1,10 @@
+/**
+ * Authors: Austin Dobrusky, Mark Forgét
+ * Date:10/4/20
+ * Description: get all information pertaining to persons address
+ */
 package com.bc;
 
-//Address class holds all information about a persons address
 public class Address {
 	private String street;
 	private String city;

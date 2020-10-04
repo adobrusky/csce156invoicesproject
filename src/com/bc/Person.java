@@ -1,8 +1,12 @@
+/**
+ * Authors: Austin Dobrusky, Mark Forgét
+ * Date:10/4/20
+ * Description: holds all of the information regarding a person
+ */
 package com.bc;
 
 import java.util.Arrays;
 
-//Person class holds all of the information regarding a person
 public class Person {
 	private String code;
 	private String firstName;

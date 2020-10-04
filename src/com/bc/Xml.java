@@ -1,3 +1,8 @@
+/**
+ * Authors: Austin Dobrusky, Mark Forgét
+ * Date:10/4/20
+ * Description: take a list and output it as xml
+ */
 package com.bc;
 
 import java.io.File;
@@ -8,7 +13,6 @@ import java.util.List;
 import com.thoughtworks.xstream.XStream;
 import com.thoughtworks.xstream.io.xml.DomDriver;
 
-//Xml class will take a list and output it as xml
 public class Xml {
 	
 	public static <T> void write(String filePath, List<T> list, String title) {

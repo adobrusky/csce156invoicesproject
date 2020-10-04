@@ -1,6 +1,10 @@
+/**
+ * Authors: Austin Dobrusky, Mark Forgét
+ * Date:10/4/20
+ * Description: DataConverter class outputs the Persons.dat, Customers.dat, and Products.dat as JSON and XML files
+ */
 package com.bc;
 
-//DataConverter class outputs the Persons.dat, Customers.dat, and Products.dat as JSON and XML files
 public class DataConverter {
 	
 	public static void main(String[] args) {

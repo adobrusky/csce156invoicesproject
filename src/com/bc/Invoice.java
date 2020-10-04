@@ -1,8 +1,12 @@
+/**
+ * Authors: Austin Dobrusky, Mark Forgét
+ * Date:10/4/20
+ * Description: holds all of the information for an invoice
+ */
 package com.bc;
 
 import java.util.List;
 
-//Invoice class holds all the information for an invoice
 public class Invoice implements Comparable<Invoice> {
 	
 	private String invoiceCode;

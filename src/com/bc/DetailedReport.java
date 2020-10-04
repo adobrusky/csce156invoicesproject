@@ -1,9 +1,13 @@
+/**
+ * Authors: Austin Dobrusky, Mark Forgét
+ * Date:10/4/20
+ * Description: prints the invoice details report
+ */
 package com.bc;
 
 import java.util.Arrays;
 import java.util.List;
 
-//InvoiceDetails prints the invoice details report
 public class DetailedReport extends ReportFormat {
 
 	public static String print(List<Invoice> invoices) {

@@ -1,6 +1,10 @@
+/**
+ * Authors: Austin Dobrusky, Mark Forgét
+ * Date:10/4/20
+ * Description: holds all of the information regarding a repair product
+ */
 package com.bc;
 
-//Repair class holds all of the information regarding a repair product
 public class Repair extends Product {
 	
 	private double partsCost;

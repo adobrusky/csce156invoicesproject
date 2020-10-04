@@ -1,3 +1,8 @@
+/**
+ * Authors: Austin Dobrusky, Mark Forgét
+ * Date:10/4/20
+ * Description: provides the write function for writing reports to a file
+ */
 package com.bc;
 
 import java.io.File;
@@ -5,7 +10,6 @@ import java.io.FileNotFoundException;
 import java.io.PrintWriter;
 import java.util.List;
 
-//Report class provides the write function for writing reports to a file
 public class Report {
 	
 	public static void write(List<Invoice> invoices, String filePath) {

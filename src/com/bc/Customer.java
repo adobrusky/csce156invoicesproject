@@ -1,6 +1,10 @@
+/**
+ * Authors: Austin Dobrusky, Mark Forgét
+ * Date:10/4/20
+ * Description: holds all of the information describing a customer
+ */
 package com.bc;
 
-//Customer class holds all the information about a customer
 public class Customer {
 	private String code;
 	private char type;

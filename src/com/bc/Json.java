@@ -1,3 +1,8 @@
+/**
+ * Authors: Austin Dobrusky, Mark Forgét
+ * Date:9/27/20
+ * Description: will take a list and output it as json
+ */
 package com.bc;
 
 import java.io.File;
@@ -8,7 +13,6 @@ import java.util.List;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
-//Json class will take a list and output it as json
 public class Json {
 	
 	public static <T> void write(String filePath, List<T> list, String header) {

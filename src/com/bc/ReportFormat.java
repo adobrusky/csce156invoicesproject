@@ -1,6 +1,10 @@
+/**
+ * Authors: Austin Dobrusky, Mark Forgét
+ * Date:10/4/20
+ * Description: for providing helper formatting function in the summary and detailed invoice reports
+ */
 package com.bc;
 
-//ReportHelper is used for providing helper formatting functions in the summary and detailed invoice reports
 public class ReportFormat {
 	
 	public static String multiplyString(String in, int rep) {
