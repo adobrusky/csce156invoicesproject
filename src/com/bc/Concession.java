@@ -17,16 +17,16 @@ public class Concession extends Product {
 	}
 	
 	//Copy Constructors
-	public Concession(Concession old, double d) {
+	public Concession(Concession old, double quanity) {
 		super(old.getCode(), old.getType(), old.getLabel());
 		this.unitCost = old.getUnitCost();
-		this.quanity = d;
+		this.quanity = quanity;
 	}
 	
-	public Concession(Concession old, double d, String associatedRepair) {
+	public Concession(Concession old, double quanity, String associatedRepair) {
 		super(old.getCode(), old.getType(), old.getLabel());
 		this.unitCost = old.getUnitCost();
-		this.quanity = d;
+		this.quanity = quanity;
 		this.associatedRepair = associatedRepair;
 	}
 

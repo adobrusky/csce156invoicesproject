@@ -11,7 +11,6 @@ public class Customer {
 	private String name;
 	private Person primaryContact;
 	private Address address;
-	private double taxRate;
 	
 	public Customer(String code, char type, String name, Person primaryContact, Address address) {
 		this.code = code;
@@ -44,7 +43,11 @@ public class Customer {
 	
 	
 	public double getTaxRate() {
-		return taxRate;
+		if(this.getType() == 'P') {
+			return 8;
+		} else {
+			return 4.25;
+		}
 	}
 	
 	@Override

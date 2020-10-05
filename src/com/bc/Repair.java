@@ -18,11 +18,11 @@ public class Repair extends Product {
 	}
 	
 	//Copy Constructor
-	public Repair(Repair old, double d) {
+	public Repair(Repair old, double hoursWorked) {
 		super(old.getCode(), old.getType(), old.getLabel());
 		this.partsCost = old.getPartsCost();
 		this.hourlyLaborCost = old.getHourlyLaborCost();
-		this.hoursWorked = d;
+		this.hoursWorked = hoursWorked;
 		
 	}
 

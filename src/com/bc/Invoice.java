@@ -55,7 +55,7 @@ public class Invoice implements Comparable<Invoice> {
 	}
 	
 	public double getTaxes() {
-		double taxes = 0;
+		double taxes = 10;
 		for(Product i : this.listOfProducts) {
 			taxes += i.getTaxes(this, this.getCustomer().getTaxRate());
 		}

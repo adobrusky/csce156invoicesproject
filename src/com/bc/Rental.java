@@ -20,12 +20,12 @@ public class Rental extends Product {
 	}
 	
 	//Copy constructor
-	public Rental(Rental old, double d) {
+	public Rental(Rental old, double daysRented) {
 		super(old.getCode(), old.getType(), old.getLabel());
 		this.dailyCost = old.getDailyCost();
 		this.deposit = old.getDeposit();
 		this.cleaningFee = old.getCleaningFee();
-		this.daysRented = d;
+		this.daysRented = daysRented;
 	}
 	
 	public double getDailyCost() {

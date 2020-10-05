@@ -15,10 +15,10 @@ public class Towing extends Product {
 	}
 	
 	//Copy Constructor
-	public Towing(Towing old, double d) {
+	public Towing(Towing old, double milesTowed) {
 		super(old.getCode(), old.getType(), old.getLabel());
 		this.costPerMile = old.getCostPerMile();
-		this.milesTowed = d;
+		this.milesTowed = milesTowed;
 	}
 
 	public double getCostPerMile() {

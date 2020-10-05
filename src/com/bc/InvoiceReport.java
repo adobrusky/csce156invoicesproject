@@ -5,8 +5,6 @@
  */
 package com.bc;
 
-import java.io.BufferedReader;
-import java.io.FileReader;
 import java.io.IOException;
 
 public class InvoiceReport {
@@ -14,14 +12,8 @@ public class InvoiceReport {
 	public static void main(String[] args) throws IOException {
 		
 		//Output the summary report and invoice details report to the output.txt file
-		Report.write(ParseInvoices.getInvoices(), "data/output.txt");
-		BufferedReader in = new BufferedReader(new FileReader("data/output.txt"));
-		String line = in.readLine();
-		while(line != null) {
-			System.out.println(line);
-			line = in.readLine();
-		}
-		in.close();
-	}
+		System.out.println(SummaryReport.print(ParseInvoices.getInvoices()) + "\n\n" + DetailedReport.print(ParseInvoices.getInvoices()));
 
+	}
+	
 }
