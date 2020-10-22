@@ -5,11 +5,16 @@
  */
 package com.bc;
 
-import java.io.File;
-import java.io.FileNotFoundException;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Scanner;
+
+import javax.sql.DataSource;
+
+import com.bc.ext.ConnectionFactory;
 
 public class ParsePersons {
 	
@@ -20,8 +25,37 @@ public class ParsePersons {
 		return persons;
 	}
 	
-	public static Person findPerson(String code) {
-		//Finds a person based on the given code
+	public static Person findPerson(String personId) {
+		//Finds a person based on the given personId
+		DataSource ds = ConnectionFactory.getConnectionFactory();
+
+		Connection conn = null;
+		PreparedStatement ps = null;
+		ResultSet rs = null;
+		String code = "";
+
+		String query = "SELECT code FROM Person "
+				+ "WHERE personId = " + personId + ";";
+
+		try {
+			conn = ds.getConnection();
+			ps = conn.prepareStatement(query);
+			rs = ps.executeQuery();
+			while(rs.next()){
+				code = rs.getString(1);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				if(rs != null) rs.close();
+				if(ps != null) ps.close();
+				if(conn != null) conn.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		
 		for(Person i : persons) {
 			if(i.getCode().equals(code)) {
 				return i;
@@ -31,40 +65,47 @@ public class ParsePersons {
 	}
 	
 	private static List<Person> parsePersons() {
-		//Scans info from Persons.dat and parses it into objects of people and returns a list of people
-		Scanner s = null;
-    	try {
-			s = new Scanner(new File("data/Persons.dat"));
-		} catch (FileNotFoundException e) {
-			throw new RuntimeException(e);
-		}
-    	
-    	int peopleSize = Integer.parseInt(s.nextLine());
+		//Scans info from the Person table in the database and parses it into objects of people and returns a list of people
+
+    	int peopleSize = ConnectionFactory.getTableSize("Person");
     	List<Person> people = new ArrayList<Person>(peopleSize);
+    	String code = "";
+		String lastName = "";
+		String firstName = "";
+		int addressId = 0;
+		int personId = 0;
     	
-    	while(s.hasNext()) {
-    		String line = s.nextLine();
-    		String tokens[] = line.split(";");
-    		String code = tokens[0];
-    		String fullName[] = tokens[1].split(",");
-    		String lastName = fullName[0];
-    		String firstName = fullName[1];
-    		String fullAddress[] = tokens[2].split(",");
-    		String street = fullAddress[0];
-    		String city = fullAddress[1];
-    		String state = fullAddress[2];
-    		String zip = fullAddress[3];
-    		String country = fullAddress[4];
-    		String emails[] = {""};
-    		
-    		if(tokens.length > 3) {
-        		emails = tokens[3].split(",");
-    		}
-    		
-    		people.add(new Person(code, firstName, lastName, new Address(street, city, state, zip, country), emails));	
-    	}
-    	
-    	s.close();
+    	DataSource ds = ConnectionFactory.getConnectionFactory();
+
+		Connection conn = null;
+		PreparedStatement ps = null;
+		ResultSet rs = null;
+
+		String query = "SELECT * FROM Person;";
+
+		try {
+			conn = ds.getConnection();
+			ps = conn.prepareStatement(query);
+			rs = ps.executeQuery();
+			while(rs.next()){
+				personId = rs.getInt(1);
+				code = rs.getString(2);
+				lastName = rs.getString(3);
+				firstName = rs.getString(4);
+				addressId = rs.getInt(5);
+				people.add(new Person(code, firstName, lastName, ParseAddress.getAddress(addressId), ParseEmails.getEmails(personId)));
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				if(rs != null) rs.close();
+				if(ps != null) ps.close();
+				if(conn != null) conn.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
     	return people;
 	}
 }

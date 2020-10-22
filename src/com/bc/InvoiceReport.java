@@ -13,7 +13,6 @@ public class InvoiceReport {
 		
 		//Output the summary report and invoice details report to the output.txt file
 		System.out.println(SummaryReport.print(ParseInvoices.getInvoices()) + "\n\n" + DetailedReport.print(ParseInvoices.getInvoices()));
-
 	}
 	
 }

@@ -1,39 +1,47 @@
-package com.bc.ext;
+package com.bc;
 
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Statement;
 
 import javax.sql.DataSource;
 
-public class TestJDBC {
+import com.bc.ext.ConnectionFactory;
 
-	public static void main(String[] args) {
+public class ParseEmails {
+
+	public static String[] getEmails(int personId) {
 
 		DataSource ds = ConnectionFactory.getConnectionFactory();
 
 		Connection conn = null;
-		Statement stmt = null;
+		PreparedStatement ps = null;
 		ResultSet rs = null;
+		String emails = "";
+
+		String query = "SELECT address FROM Email " + 
+				"WHERE personId = " + personId + ";";
+
 		try {
 			conn = ds.getConnection();
-			stmt = conn.createStatement();
-			rs = stmt.executeQuery("SELECT code, lastName from Person");
+			ps = conn.prepareStatement(query);
+			rs = ps.executeQuery();
 			while(rs.next()){
-				System.out.println("Code="+rs.getString("code") + ", lastName=" + rs.getString("lastName"));
+				emails += rs.getString(1) + ",";
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {
 			try {
 				if(rs != null) rs.close();
-				if(stmt != null) stmt.close();
+				if(ps != null) ps.close();
 				if(conn != null) conn.close();
 			} catch (SQLException e) {
 				e.printStackTrace();
 			}
 		}
-	}
 
+		return emails.split(",");
+	}
 }

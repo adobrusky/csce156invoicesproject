@@ -5,11 +5,16 @@
  */
 package com.bc;
 
-import java.io.File;
-import java.io.FileNotFoundException;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Scanner;
+
+import javax.sql.DataSource;
+
+import com.bc.ext.ConnectionFactory;
 
 public class ParseCustomers {
 	
@@ -30,35 +35,47 @@ public class ParseCustomers {
 	}
 	
 	private static List<Customer> parseCustomers() {
-		//Scans info from Customers.dat and parses it into objects of customer and returns a list of customers
-		Scanner s = null;
-    	try {
-			s = new Scanner(new File("data/Customers.dat"));
-		} catch (FileNotFoundException e) {
-			throw new RuntimeException(e);
-		}
-    	
-    	int customerSize = Integer.parseInt(s.nextLine());
+		//Scans info from the Customer table in the database and parses it into objects of Customer and returns a list of Customers
+
+    	int customerSize = ConnectionFactory.getTableSize("Customer");
     	List<Customer> customers = new ArrayList<Customer>(customerSize);
+    	String code = "";
+		char type;
+		String name = "";
+		String primaryContact = "";
+		int addressId = 0;
     	
-    	while(s.hasNext()) {
-    		String line = s.nextLine();
-    		String tokens[] = line.split(";");
-    		String code = tokens[0];
-    		char type = tokens[1].charAt(0);
-    		String name = tokens[2];
-    		Person primaryContact = ParsePersons.findPerson(tokens[3]);
-    		String fullAddress[] = tokens[4].split(",");
-    		String street = fullAddress[0];
-    		String city = fullAddress[1];
-    		String state = fullAddress[2];
-    		String zip = fullAddress[3];
-    		String country = fullAddress[4];
-    		
-    		customers.add(new Customer(code, type, name, primaryContact, new Address(street, city, state, zip, country)));
-    	}
-    	
-    	s.close();
+    	DataSource ds = ConnectionFactory.getConnectionFactory();
+
+		Connection conn = null;
+		PreparedStatement ps = null;
+		ResultSet rs = null;
+
+		String query = "SELECT code, type, name, primaryContact, addressId FROM Customer;";
+
+		try {
+			conn = ds.getConnection();
+			ps = conn.prepareStatement(query);
+			rs = ps.executeQuery();
+			while(rs.next()){
+				code = rs.getString(1);
+				type = rs.getString(2).charAt(0);
+				name = rs.getString(3);
+				primaryContact = rs.getString(4);
+				addressId = rs.getInt(5);
+				customers.add(new Customer(code, type, name, ParsePersons.findPerson(primaryContact), ParseAddress.getAddress(addressId)));
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				if(rs != null) rs.close();
+				if(ps != null) ps.close();
+				if(conn != null) conn.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
     	return customers;
     	
 	}
