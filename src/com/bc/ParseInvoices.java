@@ -5,11 +5,16 @@
  */
 package com.bc;
 
-import java.io.File;
-import java.io.FileNotFoundException;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Scanner;
+
+import javax.sql.DataSource;
+
+import com.sf.ext.ConnectionFactory;
 
 public class ParseInvoices {
 	private static List<Invoice> invoices = parseInvoices();
@@ -18,8 +23,83 @@ public class ParseInvoices {
 		return invoices;
 	}
 	
+	private static int countProducts(int invoiceId) {
+		DataSource ds = ConnectionFactory.getConnectionFactory();
+
+		Connection conn = null;
+		PreparedStatement ps = null;
+		ResultSet rs = null;
+
+		String query = "SELECT COUNT(*) FROM InvoiceProductList "
+				+ "WHERE invoiceId = " + invoiceId + ";";
+		int result = 0;
+
+		try {
+			conn = ds.getConnection();
+			ps = conn.prepareStatement(query);
+			rs = ps.executeQuery();
+			while(rs.next()){
+				result = rs.getInt(1);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				if(rs != null) rs.close();
+				if(ps != null) ps.close();
+				if(conn != null) conn.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		return result;
+	}
+	
 	private static List<Invoice> parseInvoices() {
-		//Scans info from Invoices.dat and parses it into objects of invoice and returns a list of invoices
+		//Scans info from the Invoice table in the database and parses it into objects of invoice and returns a list of invoices
+		
+		int invoiceSize = ConnectionFactory.getTableSize("Invoice");
+    	List<Invoice> invoices = new ArrayList<Invoice>(invoiceSize);
+    	int invoiceId = 0;
+    	String code = "";
+		int ownerId = 0;
+		int customerId = 0;
+    	
+    	DataSource ds = ConnectionFactory.getConnectionFactory();
+
+		Connection conn = null;
+		PreparedStatement ps = null;
+		ResultSet rs = null;
+
+		String query = "SELECT * FROM Invoice;";
+
+		try {
+			conn = ds.getConnection();
+			ps = conn.prepareStatement(query);
+			rs = ps.executeQuery();
+			while(rs.next()){
+				invoiceId = rs.getInt(1);
+				code = rs.getString(2);
+				ownerId = rs.getInt(3);
+				customerId = rs.getInt(4);
+				
+				for(int i = 0; i < countProducts(invoiceId); i++) {
+					
+				}
+				
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				if(rs != null) rs.close();
+				if(ps != null) ps.close();
+				if(conn != null) conn.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		/*
 		Scanner s = null;
     	try {
 			s = new Scanner(new File("data/Invoices.dat"));
@@ -68,7 +148,7 @@ public class ParseInvoices {
     		
     	}
     	
-    	s.close();
+    	s.close(); */
     	return invoices;
 	}
 }

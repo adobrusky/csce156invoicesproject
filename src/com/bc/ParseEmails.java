@@ -7,7 +7,7 @@ import java.sql.SQLException;
 
 import javax.sql.DataSource;
 
-import com.bc.ext.ConnectionFactory;
+import com.sf.ext.ConnectionFactory;
 
 public class ParseEmails {
 

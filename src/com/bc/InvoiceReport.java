@@ -12,7 +12,10 @@ public class InvoiceReport {
 	public static void main(String[] args) throws IOException {
 		
 		//Output the summary report and invoice details report to the output.txt file
-		System.out.println(SummaryReport.print(ParseInvoices.getInvoices()) + "\n\n" + DetailedReport.print(ParseInvoices.getInvoices()));
+		//System.out.println(SummaryReport.print(ParseInvoices.getInvoices()) + "\n\n" + DetailedReport.print(ParseInvoices.getInvoices()));
+		for(Product i : ParseProducts.getProducts()) {
+			System.out.println(i);
+		}
 	}
 	
 }

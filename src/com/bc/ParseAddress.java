@@ -7,7 +7,7 @@ import java.sql.SQLException;
 
 import javax.sql.DataSource;
 
-import com.bc.ext.ConnectionFactory;
+import com.sf.ext.ConnectionFactory;
 
 public class ParseAddress {
 	
@@ -20,9 +20,9 @@ public class ParseAddress {
 		ResultSet rs = null;
 		String street = "";
 		String city = "";
-		int stateId = 0;
+		String stateId = "";
 		String zip = "";
-		int countryId = 0;
+		String countryId = "";
 
 		String query = "SELECT street, city, stateId, zip, countryId FROM Address " + 
 				"WHERE addressId = " + addressId + ";";
@@ -34,9 +34,9 @@ public class ParseAddress {
 			while(rs.next()){
 				street = rs.getString(1);
 				city = rs.getString(2);
-				stateId = rs.getInt(3);
+				stateId = rs.getString(3);
 				zip = rs.getString(4);
-				countryId = rs.getInt(5);
+				countryId = rs.getString(5);
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -49,7 +49,7 @@ public class ParseAddress {
 				e.printStackTrace();
 			}
 		}
-		return new Address(street, city, ConnectionFactory.getGeoName("State", stateId), zip, ConnectionFactory.getGeoName("Country", countryId));
+		return new Address(street, city, ConnectionFactory.getFromId("State", stateId), zip, ConnectionFactory.getFromId("Country", countryId));
 	}
 	
 }

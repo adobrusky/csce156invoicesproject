@@ -5,71 +5,121 @@
  */
 package com.bc;
 
-import java.io.File;
-import java.io.FileNotFoundException;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Scanner;
+
+import javax.sql.DataSource;
+
+import com.sf.ext.ConnectionFactory;
 
 public class ParseProducts {
-	
+
 	private static List<Product> products = parseProducts();
-	
+
 	public static List<Product> getProducts() {
 		return products;
 	}
 	
-	public static Product findProduct(String productCode) {
-		//Find the product from the given code
-		for(Product i : products) {
-			if(i.getCode().equals(productCode)) {
-				return i;
+	private static double[] getProductProps(int id, String props) {
+		DataSource ds = ConnectionFactory.getConnectionFactory();
+
+		Connection conn = null;
+		PreparedStatement ps = null;
+		ResultSet rs = null;
+		String propsArr[] = props.split(", ");
+		double result[] = new double[propsArr.length];
+
+		String query = "SELECT " + props + " FROM Product "
+				+ "WHERE productId = " + id + ";";
+
+		try {
+			conn = ds.getConnection();
+			ps = conn.prepareStatement(query);
+			rs = ps.executeQuery();
+			while(rs.next()){
+				for(int i = 1; i < propsArr.length + 1; i++) {
+					result[i - 1] = rs.getDouble(i);
+				}
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				if(rs != null) rs.close();
+				if(ps != null) ps.close();
+				if(conn != null) conn.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
 			}
 		}
-		return null;
+		return result;
 	}
-	
+
 	private static List<Product> parseProducts() {
-		//Scans info from Products.dat and parses it into objects of products and returns a list of products
-		Scanner s = null;
-    	try {
-			s = new Scanner(new File("data/Products.dat"));
-		} catch (FileNotFoundException e) {
-			throw new RuntimeException(e);
+		//Scans info from the Product table in the database and parses it into objects of products and returns a list of products
+
+		int productSize = ConnectionFactory.getTableSize("Product");
+		List<Product> products = new ArrayList<Product>(productSize);
+		int productId = 0;
+		String code = "";
+		char type;
+		String label = "";
+		double props[];
+
+		DataSource ds = ConnectionFactory.getConnectionFactory();
+
+		Connection conn = null;
+		PreparedStatement ps = null;
+		ResultSet rs = null;
+
+		String query = "SELECT productId, code, type, label FROM Product;";
+
+		try {
+			conn = ds.getConnection();
+			ps = conn.prepareStatement(query);
+			rs = ps.executeQuery();
+			while(rs.next()){
+				productId = rs.getInt(1);
+				code = rs.getString(2);
+				type = rs.getString(3).charAt(0);
+				label = rs.getString(4);
+				
+				switch(type) {
+				case 'R':
+					props = getProductProps(productId, "dailyCost, deposit, cleaningFee");
+					products.add(new Rental(code, type, label, props[0], props[1], props[2]));
+					break;
+				case 'F':
+					props = getProductProps(productId, "partsCost, hourlyLaborCosts");
+					products.add(new Repair(code, type, label, props[0], props[1]));
+					break;
+				case 'C':
+					props = getProductProps(productId, "unitCost");
+					products.add(new Concession(code, type, label, props[0]));
+					break;
+				case 'T':
+					props = getProductProps(productId, "costPerMile");
+					products.add(new Towing(code, type, label, props[0]));
+					break;
+				}
+				
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				if(rs != null) rs.close();
+				if(ps != null) ps.close();
+				if(conn != null) conn.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
 		}
-    	
-    	int productSize = Integer.parseInt(s.nextLine());
-    	List<Product> products = new ArrayList<Product>(productSize);
-    	
-    	while(s.hasNext()) {
-    		String tokens[] = s.nextLine().split(";");
-    		String code = tokens[0];
-    		char type = tokens[1].charAt(0);
-    		String label = tokens[2];
-    		switch(type) {
-    			case 'R':
-    				double dailyCost = Double.parseDouble(tokens[3]);
-    				double deposit = Double.parseDouble(tokens[4]);
-    				double cleaningFee = Double.parseDouble(tokens[5]);
-    				products.add(new Rental(code, type, label, dailyCost, deposit, cleaningFee));
-    				break;
-    			case 'F':
-    				double partsCosts = Double.parseDouble(tokens[3]);
-    				double hourlyLaborCosts = Double.parseDouble(tokens[4]);
-    				products.add(new Repair(code, type, label, partsCosts, hourlyLaborCosts));
-    				break;
-    			case 'C':
-    				double unitCost = Double.parseDouble(tokens[3]);
-    				products.add(new Concession(code, type, label, unitCost));
-    				break;
-    			case 'T':
-    				double costPerMile = Double.parseDouble(tokens[3]);
-    				products.add(new Towing(code, type, label, costPerMile));
-    				break;
-    		}
-    	}
-    	
-    	s.close();
-    	return products;
+		
+		return products;
 	}
 }

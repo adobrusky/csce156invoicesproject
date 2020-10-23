@@ -14,7 +14,7 @@ import java.util.List;
 
 import javax.sql.DataSource;
 
-import com.bc.ext.ConnectionFactory;
+import com.sf.ext.ConnectionFactory;
 
 public class ParseCustomers {
 	
@@ -22,16 +22,6 @@ public class ParseCustomers {
 	
 	public static List<Customer> getCustomers() {
 		return customers;
-	}
-	
-	public static Customer findCustomer(String customerCode) {
-		//Find the customer from the given code
-		for(Customer i : customers) {
-			if(i.getCode().equals(customerCode)) {
-				return i;
-			}
-		}
-		return null;
 	}
 	
 	private static List<Customer> parseCustomers() {
@@ -63,7 +53,7 @@ public class ParseCustomers {
 				name = rs.getString(3);
 				primaryContact = rs.getString(4);
 				addressId = rs.getInt(5);
-				customers.add(new Customer(code, type, name, ParsePersons.findPerson(primaryContact), ParseAddress.getAddress(addressId)));
+				customers.add(new Customer(code, type, name, ConnectionFactory.getFromId("Person", primaryContact), ParseAddress.getAddress(addressId)));
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
