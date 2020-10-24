@@ -1,7 +1,7 @@
 /**
  * Authors: Austin Dobrusky, Mark Forgét
  * Date:10/4/20
- * Description: parses the Cutomers.dat and stores the parsed list
+ * Description: parses customers from the database and stores them as objects
  */
 package com.bc;
 
@@ -27,12 +27,12 @@ public class ParseCustomers {
 	private static List<Customer> parseCustomers() {
 		//Scans info from the Customer table in the database and parses it into objects of Customer and returns a list of Customers
 
-    	int customerSize = ConnectionFactory.getTableSize("Customer");
+    	int customerSize = ConnectionFactory.countTable("Customer");
     	List<Customer> customers = new ArrayList<Customer>(customerSize);
     	String code = "";
 		char type;
 		String name = "";
-		String primaryContact = "";
+		int primaryContact = 0;
 		int addressId = 0;
     	
     	DataSource ds = ConnectionFactory.getConnectionFactory();
@@ -51,9 +51,9 @@ public class ParseCustomers {
 				code = rs.getString(1);
 				type = rs.getString(2).charAt(0);
 				name = rs.getString(3);
-				primaryContact = rs.getString(4);
+				primaryContact = rs.getInt(4);
 				addressId = rs.getInt(5);
-				customers.add(new Customer(code, type, name, ConnectionFactory.getFromId("Person", primaryContact), ParseAddress.getAddress(addressId)));
+				customers.add(new Customer(code, type, name, ConnectionFactory.getFromId("Person", primaryContact), ConnectionFactory.getAddress(addressId)));
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
