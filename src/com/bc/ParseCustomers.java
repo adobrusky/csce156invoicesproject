@@ -14,8 +14,6 @@ import java.util.List;
 
 import javax.sql.DataSource;
 
-import com.sf.ext.ConnectionFactory;
-
 public class ParseCustomers {
 	
 	private static List<Customer> customers = parseCustomers();
@@ -27,7 +25,7 @@ public class ParseCustomers {
 	private static List<Customer> parseCustomers() {
 		//Scans info from the Customer table in the database and parses it into objects of Customer and returns a list of Customers
 
-    	int customerSize = ConnectionFactory.countTable("Customer");
+    	int customerSize = DBUtil.countTable("Customer");
     	List<Customer> customers = new ArrayList<Customer>(customerSize);
     	String code = "";
 		char type;
@@ -53,7 +51,7 @@ public class ParseCustomers {
 				name = rs.getString(3);
 				primaryContact = rs.getInt(4);
 				addressId = rs.getInt(5);
-				customers.add(new Customer(code, type, name, ConnectionFactory.getFromId("Person", primaryContact), ConnectionFactory.getAddress(addressId)));
+				customers.add(new Customer(code, type, name, DBUtil.getFromId("Person", primaryContact), DBUtil.getAddress(addressId)));
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();

@@ -14,8 +14,6 @@ import java.util.List;
 
 import javax.sql.DataSource;
 
-import com.sf.ext.ConnectionFactory;
-
 public class ParsePersons {
 	
 	private static List<Person> persons = parsePersons();
@@ -24,9 +22,10 @@ public class ParsePersons {
 		return persons;
 	}
 	
-	//returns an array of emails from a given personId
-	public static String[] getEmails(int personId) {
 
+	public static String[] getEmails(int personId) {
+		//returns an array of emails from a given personId
+		
 		DataSource ds = ConnectionFactory.getConnectionFactory();
 
 		Connection conn = null;
@@ -62,7 +61,7 @@ public class ParsePersons {
 	private static List<Person> parsePersons() {
 		//Scans info from the Person table in the database and parses it into objects of people and returns a list of people
 
-    	int peopleSize = ConnectionFactory.countTable("Person");
+    	int peopleSize = DBUtil.countTable("Person");
     	List<Person> people = new ArrayList<Person>(peopleSize);
     	String code = "";
 		String lastName = "";
@@ -88,7 +87,7 @@ public class ParsePersons {
 				lastName = rs.getString(3);
 				firstName = rs.getString(4);
 				addressId = rs.getInt(5);
-				people.add(new Person(code, firstName, lastName, ConnectionFactory.getAddress(addressId), getEmails(personId)));
+				people.add(new Person(code, firstName, lastName, DBUtil.getAddress(addressId), getEmails(personId)));
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();

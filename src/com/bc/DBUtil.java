@@ -1,9 +1,9 @@
 /**
  * Authors: Austin Dobrusky, Mark Forgét
  * Date:10/24/20
- * Description: holds some main database connection methods that are used across several classes
+ * Description: contains database credentials as well as helper functions to make pulling certain things from the database easier
  */
-package com.sf.ext;
+package com.bc;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -12,31 +12,15 @@ import java.sql.SQLException;
 
 import javax.sql.DataSource;
 
-import com.bc.Address;
-import com.bc.Customer;
-import com.bc.ParseCustomers;
-import com.bc.ParsePersons;
-import com.bc.ParseProducts;
-import com.bc.Person;
-import com.bc.Product;
-import com.mysql.jdbc.jdbc2.optional.MysqlDataSource;
-
-public class ConnectionFactory {
-
-	//Main connection factory method. Sets up the connection with credentials from DBUtil.java
-	public static DataSource getConnectionFactory() {
-		MysqlDataSource mysqlDS = null;
-		mysqlDS = new MysqlDataSource();
-		mysqlDS.setURL(DBUtil.URL);
-		mysqlDS.setUser(DBUtil.USERNAME);
-		mysqlDS.setPassword(DBUtil.PASSWORD);
-		return mysqlDS;
-	}
-
+public class DBUtil {
+	public static final String URL = "jdbc:mysql://cse.unl.edu/adobrusk?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC";
+	public static final String USERNAME = "adobrusk";
+	public static final String PASSWORD = "ekW:t7";
+	
 	//Counts the amount of items in a table
 	public static int countTable(String tableName) {
 
-		DataSource ds = getConnectionFactory();
+		DataSource ds = ConnectionFactory.getConnectionFactory();
 
 		Connection conn = null;
 		PreparedStatement ps = null;
@@ -132,9 +116,10 @@ public class ConnectionFactory {
 		return null;
 	}
 
-	//Returns an address based on a given addressId
-	public static Address getAddress(int addressId) {
 
+	public static Address getAddress(int addressId) {
+		//Returns an address based on a given addressId
+		
 		DataSource ds = ConnectionFactory.getConnectionFactory();
 
 		Connection conn = null;
@@ -171,14 +156,16 @@ public class ConnectionFactory {
 				e.printStackTrace();
 			}
 		}
-		return new Address(street, city, ConnectionFactory.getFromId("State", stateId), zip, ConnectionFactory.getFromId("Country", countryId));
+		return new Address(street, city, getFromId("State", stateId), zip, getFromId("Country", countryId));
 	}
 
-	/* 
-	 * Main method that returns product info from a given product id or a product id paired with an invoice id. 
-	 * example of product info is the dailyCost or daysRented field in a rental product
-	 * */
+
 	private static double[] mainProductInfo(String table, int productId, int invoiceId, String props) {
+		/* 
+		 * Main method that returns product info from a given product id or a product id paired with an invoice id. 
+		 * example of product info is the dailyCost or daysRented field in a rental product
+		 * */
+		
 		DataSource ds = ConnectionFactory.getConnectionFactory();
 
 		Connection conn = null;
@@ -217,14 +204,16 @@ public class ConnectionFactory {
 		return result;
 	}
 
-	//Runs the mainProductInfo method without a given invoiceId
+
 	public static double[] getProductInfo(String table, int productId, String props) {
+		//Runs the mainProductInfo method without a given invoiceId
+		
 		return mainProductInfo(table, productId, 0, props);
 	}
 
-	//Runs the mainProductInfo method with a given invoiceId
 	public static double[] getProductInfo(String table, int productId, int invoiceId, String props) {
+		//Runs the mainProductInfo method with a given invoiceId
+		
 		return mainProductInfo(table, productId, invoiceId, props);
 	}
-
 }

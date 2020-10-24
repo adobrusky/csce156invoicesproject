@@ -14,8 +14,6 @@ import java.util.List;
 
 import javax.sql.DataSource;
 
-import com.sf.ext.ConnectionFactory;
-
 public class ParseProducts {
 
 	private static List<Product> products = parseProducts();
@@ -27,7 +25,7 @@ public class ParseProducts {
 	private static List<Product> parseProducts() {
 		//Scans info from the Product table in the database and parses it into objects of products and returns a list of products
 
-		int productSize = ConnectionFactory.countTable("Product");
+		int productSize = DBUtil.countTable("Product");
 		List<Product> products = new ArrayList<Product>(productSize);
 		int productId = 0;
 		String code = "";
@@ -55,19 +53,19 @@ public class ParseProducts {
 				
 				switch(type) {
 				case 'R':
-					props = ConnectionFactory.getProductInfo("Product", productId, "dailyCost, deposit, cleaningFee");
+					props = DBUtil.getProductInfo("Product", productId, "dailyCost, deposit, cleaningFee");
 					products.add(new Rental(code, type, label, props[0], props[1], props[2]));
 					break;
 				case 'F':
-					props = ConnectionFactory.getProductInfo("Product", productId, "partsCost, hourlyLaborCosts");
+					props = DBUtil.getProductInfo("Product", productId, "partsCost, hourlyLaborCosts");
 					products.add(new Repair(code, type, label, props[0], props[1]));
 					break;
 				case 'C':
-					props = ConnectionFactory.getProductInfo("Product", productId, "unitCost");
+					props = DBUtil.getProductInfo("Product", productId, "unitCost");
 					products.add(new Concession(code, type, label, props[0]));
 					break;
 				case 'T':
-					props = ConnectionFactory.getProductInfo("Product", productId, "costPerMile");
+					props = DBUtil.getProductInfo("Product", productId, "costPerMile");
 					products.add(new Towing(code, type, label, props[0]));
 					break;
 				}

@@ -11,7 +11,7 @@ public class InvoiceReport {
 
 	public static void main(String[] args) throws IOException {
 		
-		//Output the summary report and invoice details report to the output.txt file
+		//Output the summary report and invoice details report to the stand output
 		System.out.println(SummaryReport.print(ParseInvoices.getInvoices()) + "\n\n" + DetailedReport.print(ParseInvoices.getInvoices()));
 	}
 	
