@@ -1,39 +1,24 @@
 package com.bc;
 
-import java.sql.Connection;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
-
-import javax.sql.DataSource;
+import com.bc.ext.InvoiceData;
 
 public class TestJDBC {
 
 	public static void main(String[] args) {
 
-		DataSource ds = ConnectionFactory.getConnectionFactory();
-
-		Connection conn = null;
-		Statement stmt = null;
-		ResultSet rs = null;
-		try {
-			conn = ds.getConnection();
-			stmt = conn.createStatement();
-			rs = stmt.executeQuery("SELECT code, lastName from Person");
-			while(rs.next()){
-				System.out.println("Code="+rs.getString("code") + ", lastName=" + rs.getString("lastName"));
-			}
-		} catch (SQLException e) {
-			e.printStackTrace();
-		} finally {
-			try {
-				if(rs != null) rs.close();
-				if(stmt != null) stmt.close();
-				if(conn != null) conn.close();
-			} catch (SQLException e) {
-				e.printStackTrace();
-			}
-		}
+		/**
+		 * 2. Method to add a person record to the database with the provided data.
+		 * 
+		 * @param personCode
+		 * @param firstName
+		 * @param lastName
+		 * @param street
+		 * @param city
+		 * @param state
+		 * @param zip
+		 * @param country
+		 */
+		InvoiceData.addPerson("123456", "John", "Doe", "45 Wall St", "New York", "XX", "5436", "India");
 	}
 
 }

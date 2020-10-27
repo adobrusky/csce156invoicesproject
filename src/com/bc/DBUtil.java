@@ -1,7 +1,7 @@
 /**
  * Authors: Austin Dobrusky, Mark Forgét
  * Date:10/24/20
- * Description: contains database credentials as well as helper functions to make pulling certain things from the database easier
+ * Description: contains database credentials as well as helper functions to make interacting with the database easier
  */
 package com.bc;
 
@@ -9,6 +9,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 
 import javax.sql.DataSource;
 
@@ -216,4 +217,6 @@ public class DBUtil {
 		
 		return mainProductInfo(table, productId, invoiceId, props);
 	}
+	
+	
 }
