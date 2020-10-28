@@ -5,6 +5,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.sql.Types;
 import java.util.List;
 
 import javax.sql.DataSource;
@@ -37,6 +38,8 @@ import com.bc.model.Repair;
 
 
 public class InvoiceData {
+
+	private final static String quote = "\", \"";
 
 	private static void insert(String table, String columns, String values) {
 		insertGetKey(table, columns, values);
@@ -71,7 +74,7 @@ public class InvoiceData {
 	}
 
 
-	private static int getId(String table, String name) {
+	private static int getId(String table, String field, String data) {
 		DataSource ds = ConnectionFactory.getConnectionFactory();
 
 		Connection conn = null;
@@ -81,7 +84,7 @@ public class InvoiceData {
 		Integer id = 0;
 
 		String query = "SELECT " + columnId + " FROM " + table + " " + 
-				"WHERE name = \"" + name + "\";";
+				"WHERE " + field + " = \"" + data + "\";";
 
 		try {
 			conn = ds.getConnection();
@@ -90,7 +93,7 @@ public class InvoiceData {
 			if(rs.next() != false) {
 				id = rs.getInt(1);
 			} else {
-				id = insertGetKey(table, "name", name);
+				id = insertGetKey(table, field, data);
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -114,8 +117,8 @@ public class InvoiceData {
 		Connection conn = null;
 		PreparedStatement ps = null;
 		ResultSet rs = null;
-		int stateId = getId("State", state);
-		int countryId = getId("Country", country);
+		int stateId = getId("State", "name", state);
+		int countryId = getId("Country", "name", country);
 		System.out.println(countryId);
 		Integer addressId = 0;
 
@@ -132,8 +135,8 @@ public class InvoiceData {
 			if(rs.next() != false) {
 				addressId = rs.getInt(1);
 			} else {
-				addressId = insertGetKey("Address", "street, city, stateId, zip, countryId", street + "\", \"" + city
-						+ "\", \"" + stateId + "\", \"" + zip + "\", \"" + countryId);
+				addressId = insertGetKey("Address", "street, city, stateId, zip, countryId", street + quote + city
+						+ quote + stateId + quote + zip + quote + countryId);
 			}
 			while(rs.next()){
 				addressId = rs.getInt(1);
@@ -150,7 +153,7 @@ public class InvoiceData {
 			}
 		}
 
-		return (int)addressId;
+		return addressId;
 	}
 
 	/**
@@ -174,8 +177,8 @@ public class InvoiceData {
 	 */
 	public static void addPerson(String personCode, String firstName, String lastName, String street, String city, String state, String zip, String country) {
 		int addressId = getAddressId(street, city, state, zip, country);
-		insert("Person", "code, firstName, lastName, addressId", personCode + "\", \"" + firstName + "\", \"" + 
-				lastName + "\", \"" + addressId);
+		insert("Person", "code, firstName, lastName, addressId", personCode + quote + firstName + quote + 
+				lastName + quote + addressId);
 	}
 
 	/**
@@ -186,7 +189,7 @@ public class InvoiceData {
 	 * @param email
 	 */
 	public static void addEmail(String personCode, String email) {
-		insert("Email", "personId, address", personCode + "\", \"" + email);
+		insert("Email", "personId, address", personCode + quote + email);
 	}
 
 	/**
@@ -228,7 +231,7 @@ public class InvoiceData {
 	 * @param unitCost
 	 */
 	public static void addConcession(String productCode, String productLabel, double unitCost) {
-		/* TODO*/
+		insert("Product", "code, type, label, unitCost", productCode + "\", \"C\", \"" + productLabel + quote + unitCost);
 	}
 
 	/**
@@ -240,7 +243,7 @@ public class InvoiceData {
 	 * @param laborRate
 	 */
 	public static void addRepair(String productCode, String productLabel, double partsCost, double laborRate) {
-		/* TODO*/
+		insert("Product", "code, type, label, partsCost, hourlyLaborCosts", productCode + "\", \"F\", \"" + productLabel + quote + partsCost + quote + laborRate);
 	}
 
 	/**
@@ -251,7 +254,7 @@ public class InvoiceData {
 	 * @param costPerMile
 	 */
 	public static void addTowing(String productCode, String productLabel, double costPerMile) {
-		/* TODO*/
+		insert("Product", "code, type, label, costPerMile", productCode + "\", \"T\", \"" + productLabel + quote + costPerMile);
 	}
 
 	/**
@@ -264,7 +267,7 @@ public class InvoiceData {
 	 * @param cleaningFee
 	 */
 	public static void addRental(String productCode, String productLabel, double dailyCost, double deposit, double cleaningFee) {
-		/* TODO*/
+		insert("Product", "code, type, label, dailyCost, deposit, cleaningFee", productCode + "\", \"R\", \"" + productLabel + quote + dailyCost + quote + deposit + quote + cleaningFee);
 	}
 
 	/**
@@ -282,7 +285,9 @@ public class InvoiceData {
 	 * @param customertCode
 	 */
 	public static void addInvoice(String invoiceCode, String ownerCode, String customerCode) {
-		/* TODO*/
+		int ownerId = getId("Person", "code", ownerCode);
+		int customerId = getId("Customer", "code", customerCode);
+		insert("Invoice", "invoiceCode, ownerCode, customerCode", invoiceCode + quote + ownerId + quote + customerId);
 	}
 
 	/**
@@ -295,7 +300,9 @@ public class InvoiceData {
 	 * @param milesTowed
 	 */
 	public static void addTowingToInvoice(String invoiceCode, String productCode, double milesTowed) {
-		/* TODO*/
+		int invoiceId = getId("Invoice", "invoiceCode", invoiceCode);
+		int productId = getId("Product", "code", productCode);
+		insert("InvoiceProductList", "invoiceId, productId, milesTowed", invoiceId + quote + productId + quote + milesTowed);
 	}
 
 	/**
@@ -308,7 +315,9 @@ public class InvoiceData {
 	 * @param hoursWorked
 	 */
 	public static void addRepairToInvoice(String invoiceCode, String productCode, double hoursWorked) {
-		/* TODO*/
+		int invoiceId = getId("Invoice", "invoiceCode", invoiceCode);
+		int productId = getId("Product", "code", productCode);
+		insert("InvoiceProductList", "invoiceId, productId, hoursWorked", invoiceId + quote + productId + quote + hoursWorked);
 	}
 
 	/**
@@ -323,7 +332,15 @@ public class InvoiceData {
 	 * @param repairCode
 	 */
 	public static void addConcessionToInvoice(String invoiceCode, String productCode, int quantity, String repairCode) {
-		/* TODO*/
+		int invoiceId = getId("Invoice", "invoiceCode", invoiceCode);
+		int productId = getId("Product", "code", productCode);
+		if(repairCode.length() > 0) {
+			int repairId = getId("Product", "code", repairCode);
+			insert("InvoiceProductList", "invoiceId, productId, quantity, associatedRepair", invoiceId + quote + productId + quote + quantity + quote + repairId);
+		} else {
+			insert("InvoiceProductList", "invoiceId, productId, quantity", invoiceId + quote + productId + quote + quantity);
+		}
+
 	}
 
 	/**
@@ -336,7 +353,9 @@ public class InvoiceData {
 	 * @param daysRented
 	 */
 	public static void addRentalToInvoice(String invoiceCode, String productCode, double daysRented) {
-		/* TODO*/
+		int invoiceId = getId("Invoice", "invoiceCode", invoiceCode);
+		int productId = getId("Product", "code", productCode);
+		insert("InvoiceProductList", "invoiceId, productId, daysRented", invoiceId + quote + productId + quote + daysRented);
 	}
 
 
