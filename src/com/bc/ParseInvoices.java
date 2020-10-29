@@ -21,8 +21,8 @@ public class ParseInvoices {
 		return invoices;
 	}
 
-	//Creates and returns a list of products from the given invoiceId
 	private static List<Product> buildProductList(int invoiceId) {
+		//Creates and returns a list of products from the given invoiceId
 
 		List<Product> productList = new ArrayList<Product>();
 		int productId = 0;

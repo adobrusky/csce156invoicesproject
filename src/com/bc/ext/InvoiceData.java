@@ -1,3 +1,8 @@
+/**
+ * Authors: Austin Dobrusky, Mark Forgét
+ * Date:10/28/20
+ * Description: API for interacting with the database
+ */
 package com.bc.ext;
 
 import java.sql.Connection;
@@ -39,13 +44,18 @@ import com.bc.model.Repair;
 
 public class InvoiceData {
 
+	//String to make the querying of stuff easier
 	private final static String quote = "\", \"";
 
 	private static void insert(String table, String columns, String values) {
+		//Inserts values into the db
+		
 		insertGetKey(table, columns, values);
 	}
 
 	private static int insertGetKey(String table, String columns, String values) {
+		//Inserts values into the db and returns its primary key or returns a primary key of an item that matches the one being inserted
+		
 		DataSource ds = ConnectionFactory.getConnectionFactory();
 		Connection conn = null;
 		PreparedStatement ps = null;
@@ -72,9 +82,32 @@ public class InvoiceData {
 		return key;
 
 	}
+	
+	private static void delete(String table) {
+		//Deletes all rows of a given table
+		
+		DataSource ds = ConnectionFactory.getConnectionFactory();
+		Connection conn = null;
+		PreparedStatement ps = null;
+
+		String query = "DELETE FROM " + table + ";";
+
+		try {
+			conn = ds.getConnection();
+			ps = conn.prepareStatement(query);
+			ps.executeUpdate();
+		} catch (SQLException e) {
+			System.out.println("SQLException: ");
+			e.printStackTrace();
+			throw new RuntimeException(e);
+		}
+		
+	}
 
 
 	private static int getId(String table, String field, String data) {
+		//Get the primary key of an item that matches that criteria and if nothing matches it inserts it and returns the primary key
+		
 		DataSource ds = ConnectionFactory.getConnectionFactory();
 
 		Connection conn = null;
@@ -112,6 +145,8 @@ public class InvoiceData {
 	}
 
 	private static int getAddressId(String street, String city, String state, String zip, String country) {
+		//Returns the primary key of an address that matches the given criteria. If nothing matches it will insert it and return the key
+		
 		DataSource ds = ConnectionFactory.getConnectionFactory();
 
 		Connection conn = null;
@@ -119,7 +154,6 @@ public class InvoiceData {
 		ResultSet rs = null;
 		int stateId = getId("State", "name", state);
 		int countryId = getId("Country", "name", country);
-		System.out.println(countryId);
 		Integer addressId = 0;
 
 		String query = "SELECT addressId FROM Address " + 
@@ -160,7 +194,9 @@ public class InvoiceData {
 	 * 1. Method that removes every person record from the database
 	 */
 	public static void removeAllPersons() {
-		/* TODO*/
+		delete("Email");
+		removeAllCustomers();
+		delete("Person");
 	}
 
 	/**
@@ -195,8 +231,9 @@ public class InvoiceData {
 	/**
 	 * 4. Method that removes every customer record from the database
 	 */
-	public static void removeAllCusomters() {
-		/* TODO*/
+	public static void removeAllCustomers() {
+		removeAllInvoices();
+		delete("Customer");
 	}
 
 	/**
@@ -213,14 +250,18 @@ public class InvoiceData {
 	 * @param country
 	 */
 	public static void addCustomer(String customerCode, String customerType, String primaryContactPersonCode, String name, String street, String city, String state, String zip, String country) {
-		/* TODO*/
+		int addressId = getAddressId(street, city, state, zip, country);
+		int primaryContactId = getId("Person", "code", primaryContactPersonCode);
+		insert("Customer", "code, type, name, primaryContact, addressId", customerCode + quote + customerType + quote + 
+				name + quote + primaryContactId + quote + addressId);
 	}
 
 	/**
 	 * 6. Removes all product records from the database
 	 */
 	public static void removeAllProducts() {
-		/* TODO*/
+		delete("InvoiceProductList");
+		delete("Product");
 	}
 
 	/**
@@ -274,7 +315,8 @@ public class InvoiceData {
 	 * 11. Removes all invoice records from the database
 	 */
 	public static void removeAllInvoices() {
-		/* TODO*/
+		delete("InvoiceProductList");
+		delete("Invoice");
 	}
 
 	/**
