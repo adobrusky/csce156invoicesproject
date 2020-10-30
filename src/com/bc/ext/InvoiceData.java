@@ -77,6 +77,14 @@ public class InvoiceData {
 			System.out.println("SQLException: ");
 			e.printStackTrace();
 			throw new RuntimeException(e);
+		} finally {
+			try {
+				if(ps != null) ps.close();
+				if(conn != null) conn.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+
 		}
 
 		return key;
@@ -100,6 +108,14 @@ public class InvoiceData {
 			System.out.println("SQLException: ");
 			e.printStackTrace();
 			throw new RuntimeException(e);
+		} finally {
+			try {
+				if(ps != null) ps.close();
+				if(conn != null) conn.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+
 		}
 		
 	}
@@ -195,7 +211,7 @@ public class InvoiceData {
 	 */
 	public static void removeAllPersons() {
 		delete("Email");
-		removeAllCustomers();
+		removeAllCusomters();
 		delete("Person");
 	}
 
@@ -225,13 +241,14 @@ public class InvoiceData {
 	 * @param email
 	 */
 	public static void addEmail(String personCode, String email) {
-		insert("Email", "personId, address", personCode + quote + email);
+		int personId = getId("Person", "code", personCode);
+		insert("Email", "personId, address", personId + quote + email);
 	}
 
 	/**
 	 * 4. Method that removes every customer record from the database
 	 */
-	public static void removeAllCustomers() {
+	public static void removeAllCusomters() {
 		removeAllInvoices();
 		delete("Customer");
 	}
@@ -272,6 +289,7 @@ public class InvoiceData {
 	 * @param unitCost
 	 */
 	public static void addConcession(String productCode, String productLabel, double unitCost) {
+		productLabel = productLabel.replace("\"", "");
 		insert("Product", "code, type, label, unitCost", productCode + "\", \"C\", \"" + productLabel + quote + unitCost);
 	}
 
