@@ -10,6 +10,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 import javax.sql.DataSource;
@@ -35,11 +36,12 @@ public class ParseInvoices {
 		ResultSet rs = null;
 
 		String query = "SELECT productId FROM InvoiceProductList "
-				+ "WHERE invoiceId = " + invoiceId + ";";
+				+ "WHERE invoiceId = ?;";
 
 		try {
 			conn = ds.getConnection();
 			ps = conn.prepareStatement(query);
+			ps.setInt(1, invoiceId);
 			rs = ps.executeQuery();
 			while(rs.next()){
 				productId = rs.getInt(1);
@@ -126,7 +128,7 @@ public class ParseInvoices {
 				e.printStackTrace();
 			}
 		}
-		
+		Collections.sort(invoices);
 		return invoices;
 	}
 }

@@ -55,7 +55,7 @@ public class Invoice implements Comparable<Invoice> {
 	}
 	
 	public double getTaxes() {
-		double taxes = 10;
+		double taxes = 0;
 		for(Product i : this.listOfProducts) {
 			taxes += i.getTaxes(this, this.getCustomer().getTaxRate());
 		}
@@ -94,7 +94,12 @@ public class Invoice implements Comparable<Invoice> {
 
 	@Override
 	public int compareTo(Invoice other) {
-		return getCustomer().getName().compareTo(other.getCustomer().getName());
+		int comp = getCustomer().getName().compareTo(other.getCustomer().getName());
+		if(Integer.valueOf(comp) != null) {
+			return comp;
+		} else {
+			return -1;
+		}
 	}
 
 	

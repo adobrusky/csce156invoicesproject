@@ -34,11 +34,12 @@ public class ParsePersons {
 		String emails = "";
 
 		String query = "SELECT address FROM Email " + 
-				"WHERE personId = " + personId + ";";
+				"WHERE personId = ?;";
 
 		try {
 			conn = ds.getConnection();
 			ps = conn.prepareStatement(query);
+			ps.setInt(1, personId);
 			rs = ps.executeQuery();
 			while(rs.next()){
 				emails += rs.getString(1) + ",";

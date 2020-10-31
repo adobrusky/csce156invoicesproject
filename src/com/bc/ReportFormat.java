@@ -23,10 +23,10 @@ public class ReportFormat {
 	
 	public static String typeToString(char type) {
 		//Returns type of customer as a string value instead of char
-		if(type == 'P') {
-			return "Personal";
-		} else {
+		if(type == 'B' || type == 'b') {
 			return "Business";
+		} else {
+			return "Personal";
 		}
 	}
 	
@@ -39,13 +39,13 @@ public class ReportFormat {
 				result += String.format(columnFormat.substring(7), product.getLabel() + 
 						" (" + ((Rental)product).getDaysRented() + " days @ $" + String.format("%.2f", ((Rental)product).getDailyCost()) + "/day)", 
 						subtotal, discount, string, total);
-				result += String.format(columnFormat.substring(0, 12), "", "(+ $" + String.format("%.2f", ((Rental)product).getCleaningFee()) + " cleaning fee, -$" + String.format("%.2f", ((Rental)product).getDeposit()) + " deposit refund)");
+				result += String.format(columnFormat.substring(0, 12), "", " (+ $" + String.format("%.2f", ((Rental)product).getCleaningFee()) + " cleaning fee, -$" + String.format("%.2f", ((Rental)product).getDeposit()) + " deposit refund)");
 				break;
 			case 'F':
 				result += String.format(columnFormat.substring(7), product.getLabel() + 
 						" (" + ((Repair)product).getHoursWorked() + " hours of labor @ $" + String.format("%.2f", ((Repair)product).getHourlyLaborCost()) + "/hour)", 
 						subtotal, discount, string, total);
-				result += String.format(columnFormat.substring(0, 12), "", "(+ $" + String.format("%.2f", ((Repair)product).getPartsCost()) + " for parts)");
+				result += String.format(columnFormat.substring(0, 12), "", " (+ $" + String.format("%.2f", ((Repair)product).getPartsCost()) + " for parts)");
 				break;
 			case 'T':
 				result += String.format(columnFormat.substring(7, 32), product.getLabel() + 

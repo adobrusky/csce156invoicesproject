@@ -25,8 +25,14 @@ public class DetailedReport extends ReportFormat {
 			//Owner and Customer info formatting
 			result += "Invoice " + i.getInvoiceCode() + "\n";
 			result += multiplyString("-", 50) + "\n";
+			String emails = "";
+			if(i.getOwner().getEmails()[0].length() > 0) {
+				emails += Arrays.toString(i.getOwner().getEmails());
+			} else {
+				emails += "[no emails on record]";
+			}
 			result += "Owner:\n" + String.format("\t%s, %s\n\t%s\n\t%s\n\t%s, %s %s %s\n", i.getOwner().getLastName(), i.getOwner().getFirstName(), 
-					Arrays.toString(i.getOwner().getEmails()), i.getOwner().getAddress().getStreet(), i.getOwner().getAddress().getCity(), 
+					emails, i.getOwner().getAddress().getStreet(), i.getOwner().getAddress().getCity(), 
 							i.getOwner().getAddress().getState(), i.getOwner().getAddress().getCountry(), i.getOwner().getAddress().getZip());
 			result += "Customer:\n" + String.format("\t%s (%s Account)\n\t%s\n\t%s, %s %s %s\n", i.getCustomer().getName(), 
 					typeToString(i.getCustomer().getType()), i.getCustomer().getAddress().getStreet(), i.getCustomer().getAddress().getCity(), 

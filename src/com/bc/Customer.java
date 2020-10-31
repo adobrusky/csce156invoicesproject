@@ -43,10 +43,10 @@ public class Customer {
 	
 	
 	public double getTaxRate() {
-		if(this.getType() == 'P') {
-			return 8;
-		} else {
+		if(this.getType() == 'B' || this.getType() == 'b') {
 			return 4.25;
+		} else {
+			return 8;
 		}
 	}
 	

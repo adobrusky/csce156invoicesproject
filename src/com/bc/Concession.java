@@ -9,7 +9,7 @@ public class Concession extends Product {
 
 	private double unitCost;
 	private double quanity;
-	private String associatedRepair = null;
+	private String associatedRepair = "";
 
 	public Concession(String code, char type, String label, double unitCost) {
 		super(code, type, label);
@@ -57,9 +57,9 @@ public class Concession extends Product {
 	@Override
 	public double getDiscount(Invoice invoice) {
 		if(this.getAssociatedRepair() != null) {
-			return -(getSubtotal() * 0.1);
+			return 0;
 		}
-		return 0;
+		return -(getSubtotal() * 0.1);
 	}
 	
 }

@@ -71,11 +71,12 @@ public class DBUtil {
 		}
 
 		String query = "SELECT " + column + " FROM " + table
-				+ " WHERE " + idColumn + " = " + id + ";";
+				+ " WHERE " + idColumn + " = ?;";
 
 		try {
 			conn = ds.getConnection();
 			ps = conn.prepareStatement(query);
+			ps.setInt(1, id);
 			rs = ps.executeQuery();
 			while(rs.next()){
 				result = rs.getString(1);
@@ -132,11 +133,12 @@ public class DBUtil {
 		int countryId = 0;
 
 		String query = "SELECT street, city, stateId, zip, countryId FROM Address " + 
-				"WHERE addressId = " + addressId + ";";
+				"WHERE addressId = ?;";
 
 		try {
 			conn = ds.getConnection();
 			ps = conn.prepareStatement(query);
+			ps.setInt(1, addressId);
 			rs = ps.executeQuery();
 			while(rs.next()){
 				street = rs.getString(1);
