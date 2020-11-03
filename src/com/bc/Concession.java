@@ -41,6 +41,18 @@ public class Concession extends Product {
 	public String getAssociatedRepair() {
 		return associatedRepair;
 	}
+	
+	public void setAssociatedRepair(Invoice invoice) {
+		if(this.getAssociatedRepair() == null) {
+			String code = null;
+			for(Product i : invoice.getListOfProducts()) {
+				if(i.getType() == 'F') {
+					code = i.getCode();
+				}
+			}
+			this.associatedRepair = code;
+		}
+	}
 
 	@Override
 	public double getSubtotal() {
@@ -56,7 +68,8 @@ public class Concession extends Product {
 
 	@Override
 	public double getDiscount(Invoice invoice) {
-		if(this.getAssociatedRepair() != null) {
+		setAssociatedRepair(invoice);
+		if(this.getAssociatedRepair() == null) {
 			return 0;
 		}
 		return -(getSubtotal() * 0.1);

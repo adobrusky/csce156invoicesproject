@@ -11,7 +11,14 @@ public class SummaryReport extends ReportFormat {
 	
 	public static String print(List<Invoice> invoices) {
 		
-		String columnFormat = "%-10.10s%-30.30s%-30s%-13s%-13s%-13s%-13s%-13s\n";
+		//Generate max invoiceCode length for formatting of columns
+		int maxCode = 0;
+		for(Invoice i : invoices) {
+			if(i.getInvoiceCode().length() + 1 > maxCode) {
+				maxCode = i.getInvoiceCode().length() + 1;
+			}
+		}
+		String columnFormat = "%-" + maxCode + "s%-30s%-30s%-13s%-13s%-13s%-13s%-13s\n";
 		
 		//Top layer formatting
 		String result = "";
@@ -32,14 +39,14 @@ public class SummaryReport extends ReportFormat {
 			grandFees += i.getFees();
 			grandTaxes += i.getTaxes();
 			grandTotal += i.getTotal() + i.getLoyaltyDiscount();
-			result += String.format("%-40.40s%-30s%-13s%-13s%-13s%-13s%-13s\n", String.format("%-10s%-30s", i.getInvoiceCode(), i.getOwner().getLastName() + ", " + i.getOwner().getFirstName()), 
+			result += String.format(columnFormat, i.getInvoiceCode(), i.getOwner().getLastName() + ", " + i.getOwner().getFirstName(), 
 					i.getCustomer().getName(), $(i.getSubtotal()), $(i.getDiscount()), $(i.getFees()), $(i.getTaxes()), $(i.getTotal() + i.getLoyaltyDiscount()));
 		
 		}
 		
 		//Bottom layer formatting
 		result += multiplyString("=", 135) + "\n";
-		result += String.format("%-70s%-13s%-13s%-13s%-13s%-13s\n", "TOTALS", $(grandSubtotal), $(grandDiscount), $(grandFees), $(grandTaxes), $(grandTotal));
+		result += String.format("%-" + (maxCode + 60) + "s%-13s%-13s%-13s%-13s%-13s\n", "TOTALS", $(grandSubtotal), $(grandDiscount), $(grandFees), $(grandTaxes), $(grandTotal));
 		return result;
 	}
 }
