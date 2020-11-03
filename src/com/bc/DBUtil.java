@@ -16,41 +16,6 @@ public class DBUtil {
 	public static final String URL = "jdbc:mysql://cse.unl.edu/adobrusk?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC";
 	public static final String USERNAME = "adobrusk";
 	public static final String PASSWORD = "ekW:t7";
-	
-	//Counts the amount of items in a table
-	public static int countTable(String tableName) {
-
-		DataSource ds = ConnectionFactory.getConnectionFactory();
-
-		Connection conn = null;
-		PreparedStatement ps = null;
-		ResultSet rs = null;
-
-		String query = "SELECT COUNT(*) FROM " + tableName + ";";
-		int tableSize = 0;
-
-		try {
-			conn = ds.getConnection();
-			ps = conn.prepareStatement(query);
-			rs = ps.executeQuery();
-			while(rs.next()){
-				tableSize = rs.getInt(1);
-			}
-		} catch (SQLException e) {
-			e.printStackTrace();
-		} finally {
-			try {
-				if(rs != null) rs.close();
-				if(ps != null) ps.close();
-				if(conn != null) conn.close();
-			} catch (SQLException e) {
-				e.printStackTrace();
-			}
-		}
-		return tableSize;
-
-	}
-
 
 	@SuppressWarnings("unchecked")
 	public static <T> T getFromId(String table, int id) {

@@ -24,9 +24,8 @@ public class ParseCustomers {
 	
 	private static List<Customer> parseCustomers() {
 		//Scans info from the Customer table in the database and parses it into objects of Customer and returns a list of Customers
-
-    	int customerSize = DBUtil.countTable("Customer");
-    	List<Customer> customers = new ArrayList<Customer>(customerSize);
+		
+    	List<Customer> customers = new ArrayList<Customer>();
     	String code = "";
 		char type;
 		String name = "";

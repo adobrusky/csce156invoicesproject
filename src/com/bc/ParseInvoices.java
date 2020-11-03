@@ -10,15 +10,14 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 
 import javax.sql.DataSource;
 
 public class ParseInvoices {
-	private static List<Invoice> invoices = parseInvoices();
+	private static InvoiceList<Invoice> invoices = parseInvoices();
 
-	public static List<Invoice> getInvoices() {
+	public static InvoiceList<Invoice> getInvoices() {
 		return invoices;
 	}
 
@@ -86,11 +85,10 @@ public class ParseInvoices {
 		return productList;
 	}
 
-	private static List<Invoice> parseInvoices() {
+	private static InvoiceList<Invoice> parseInvoices() {
 		//Scans info from the Invoice table in the database and parses it into objects of invoice and returns a list of invoices
 
-		int invoiceSize = DBUtil.countTable("Invoice");
-		List<Invoice> invoices = new ArrayList<Invoice>(invoiceSize);
+		InvoiceList<Invoice> invoices = new InvoiceList<Invoice>();
 		int invoiceId = 0;
 		String code = "";
 		int ownerId = 0;
@@ -128,7 +126,6 @@ public class ParseInvoices {
 				e.printStackTrace();
 			}
 		}
-		Collections.sort(invoices);
 		return invoices;
 	}
 }

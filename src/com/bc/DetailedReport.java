@@ -6,11 +6,10 @@
 package com.bc;
 
 import java.util.Arrays;
-import java.util.List;
 
 public class DetailedReport extends ReportFormat {
 
-	public static String print(List<Invoice> invoices) {
+	public static String print(InvoiceList<Invoice> invoices) {
 		
 		String columnFormat = "  %-20s%-70s%-13s%-13s%-13s%-13s\n";
 		

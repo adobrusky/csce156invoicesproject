@@ -62,8 +62,7 @@ public class ParsePersons {
 	private static List<Person> parsePersons() {
 		//Scans info from the Person table in the database and parses it into objects of people and returns a list of people
 
-    	int peopleSize = DBUtil.countTable("Person");
-    	List<Person> people = new ArrayList<Person>(peopleSize);
+    	List<Person> people = new ArrayList<Person>();
     	String code = "";
 		String lastName = "";
 		String firstName = "";

@@ -25,8 +25,7 @@ public class ParseProducts {
 	private static List<Product> parseProducts() {
 		//Scans info from the Product table in the database and parses it into objects of products and returns a list of products
 
-		int productSize = DBUtil.countTable("Product");
-		List<Product> products = new ArrayList<Product>(productSize);
+		List<Product> products = new ArrayList<Product>();
 		int productId = 0;
 		String code = "";
 		char type;

@@ -5,11 +5,9 @@
  */
 package com.bc;
 
-import java.util.List;
-
 public class SummaryReport extends ReportFormat {
 	
-	public static String print(List<Invoice> invoices) {
+	public static String print(InvoiceList<Invoice> invoices) {
 		
 		//Generate max invoiceCode length for formatting of columns
 		int maxCode = 0;
