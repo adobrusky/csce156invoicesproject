@@ -71,6 +71,10 @@ public class Invoice implements Comparable<Invoice> {
 	}
 	
 	public double getTotal() {
+		return this.getPartialTotal() + this.getLoyaltyDiscount();
+	}
+	
+	private double getPartialTotal() {
 		double total = this.getFees();
 		for(Product i : this.listOfProducts) {
 			total += i.getTotal(this, this.getCustomer().getTaxRate());
@@ -80,7 +84,7 @@ public class Invoice implements Comparable<Invoice> {
 	
 	public double getLoyaltyDiscount() {
 		if(this.getCustomer().getType() == 'P' && this.getCustomer().getPrimaryContact().getEmails().length >= 2) {
-			return (this.getTotal() - this.getFees()) * -0.05;
+			return (this.getPartialTotal() - this.getFees()) * -0.05;
 		} else {
 			return 0;
 		}
@@ -94,11 +98,15 @@ public class Invoice implements Comparable<Invoice> {
 
 	@Override
 	public int compareTo(Invoice other) {
-		int comp = getCustomer().getName().compareTo(other.getCustomer().getName());
-		if(Integer.valueOf(comp) != null) {
-			return comp;
+		double comp = other.getTotal();
+		if(getTotal() == comp) {
+		      return 0;  
+		      
+		} else if(getTotal() > comp) {
+		      return 1; 
+		      
 		} else {
-			return -1;
+		      return -1;
 		}
 	}
 

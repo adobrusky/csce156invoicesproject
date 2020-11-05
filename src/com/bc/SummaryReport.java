@@ -36,9 +36,9 @@ public class SummaryReport extends ReportFormat {
 			grandDiscount += i.getDiscount();
 			grandFees += i.getFees();
 			grandTaxes += i.getTaxes();
-			grandTotal += i.getTotal() + i.getLoyaltyDiscount();
+			grandTotal += i.getTotal();
 			result += String.format(columnFormat, i.getInvoiceCode(), i.getOwner().getLastName() + ", " + i.getOwner().getFirstName(), 
-					i.getCustomer().getName(), $(i.getSubtotal()), $(i.getDiscount()), $(i.getFees()), $(i.getTaxes()), $(i.getTotal() + i.getLoyaltyDiscount()));
+					i.getCustomer().getName(), $(i.getSubtotal()), $(i.getDiscount()), $(i.getFees()), $(i.getTaxes()), $(i.getTotal()));
 		
 		}
 		
