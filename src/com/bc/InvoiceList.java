@@ -9,6 +9,7 @@ public class InvoiceList<T> implements Iterable<T> {
 	private T arr[];
 	private int size;
 
+	
 	@SuppressWarnings("unchecked")
 	public InvoiceList()
 	{
@@ -20,6 +21,11 @@ public class InvoiceList<T> implements Iterable<T> {
 	{
 		this.arr = Arrays.copyOf(this.arr, this.arr.length + SIZE);
 	}
+	
+	private void decreaseSize()
+	{
+		this.arr = Arrays.copyOf(this.arr, this.arr.length - 1);
+	}
 
 	public int size() {
 		return this.size;
@@ -27,9 +33,9 @@ public class InvoiceList<T> implements Iterable<T> {
 
 	public T get(int index)
 	{
-		if (index<0 || index>this.size)
+		if (index < 0 || index > this.size)
 		{
-			throw new ArrayIndexOutOfBoundsException("Enter a correct index!!");
+			throw new ArrayIndexOutOfBoundsException("Enter a valid index");
 		}
 
 		return this.arr[index];
@@ -50,7 +56,6 @@ public class InvoiceList<T> implements Iterable<T> {
 				return last - 1; 
 			}
 
-
 			//If invoice needs to be at the middle
 			if ((double)((Invoice)this.arr[mid - 1]).getTotal() > total && (double)((Invoice)this.arr[mid + 1]).getTotal() < total) {
 				return mid; 
@@ -59,8 +64,6 @@ public class InvoiceList<T> implements Iterable<T> {
 			//if the invoices total is less than the middle
 			if ((double)((Invoice)this.arr[mid - 1]).getTotal() > total) {
 				return findIndex(mid - 1, last, total); 
-
-
 			}
 
 			//if the invoices total is greater than the middle
@@ -87,14 +90,36 @@ public class InvoiceList<T> implements Iterable<T> {
 		this.arr[index] = item;
 		this.size++;
 	}
+	
+	public void remove(int index)
+	{
+		if (index < 0 || index > this.size)
+		{
+			throw new ArrayIndexOutOfBoundsException("Enter a valid index");
+		}
+		
+		for(int i = 0; i < this.size - 1; i++) {
+			this.arr[i] = this.arr[i + 1];
+		}
+
+		this.decreaseSize();
+		this.size--;
+
+	}
 
 	public String toString()
 	{
-		String result = "";
+		String result = "[";
 		for(int i = 0; i < this.size; i++)
 		{
 			result += this.arr[i] + ", ";
 		}
+		if(this.size() > 0) {
+			result = result.substring(0, result.length() - 2) + "]";
+		} else {
+			result += "]";
+		}
+		
 		return result;
 	}
 
