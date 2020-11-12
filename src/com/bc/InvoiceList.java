@@ -1,3 +1,8 @@
+/**
+ * Authors: Austin Dobrusky, Mark Forgét
+ * Date:11/11/20
+ * Description: provides all of the methods for the InvoiceList data structure
+ */
 package com.bc;
 
 import java.util.Arrays;
@@ -11,19 +16,16 @@ public class InvoiceList<T> implements Iterable<T> {
 
 	
 	@SuppressWarnings("unchecked")
-	public InvoiceList()
-	{
+	public InvoiceList() {
 		this.arr = (T[])new Object[SIZE];
 		this.size = 0;
 	}
 
-	private void increaseSize()
-	{
+	private void increaseSize() {
 		this.arr = Arrays.copyOf(this.arr, this.arr.length + SIZE);
 	}
 	
-	private void decreaseSize()
-	{
+	private void decreaseSize() {
 		this.arr = Arrays.copyOf(this.arr, this.arr.length - 1);
 	}
 
@@ -31,18 +33,17 @@ public class InvoiceList<T> implements Iterable<T> {
 		return this.size;
 	}
 
-	public T get(int index)
-	{
-		if (index < 0 || index > this.size)
-		{
+	public T get(int index) {
+		if (index < 0 || index > this.size) {
 			throw new ArrayIndexOutOfBoundsException("Enter a valid index");
 		}
 
 		return this.arr[index];
 	}
 
-	private int findIndex(int first, int last, double total) 
-	{ 
+	private int findIndex(int first, int last, T item) { 
+		//uses a recursive binary search to find where an item should be inserted in the invoicelist
+		
 		if (last >= first) { 
 			int mid = first + (last - first) / 2; 
 
@@ -52,36 +53,35 @@ public class InvoiceList<T> implements Iterable<T> {
 			}
 
 			//If the invoice needs to go at the end
-			if ((double)((Invoice)this.arr[last - 2]).getTotal() > total) {
+			if (((Invoice)this.arr[last - 2]).compareTo((Invoice)item) > 0) {
 				return last - 1; 
 			}
 
 			//If invoice needs to be at the middle
-			if ((double)((Invoice)this.arr[mid - 1]).getTotal() > total && (double)((Invoice)this.arr[mid + 1]).getTotal() < total) {
+			if (((Invoice)this.arr[mid - 1]).compareTo((Invoice)item) > 0 && ((Invoice)this.arr[mid + 1]).compareTo((Invoice)item) < 0) {
 				return mid; 
 			}
 
 			//if the invoices total is less than the middle
-			if ((double)((Invoice)this.arr[mid - 1]).getTotal() > total) {
-				return findIndex(mid - 1, last, total); 
+			if (((Invoice)this.arr[mid - 1]).compareTo((Invoice)item) > 0) {
+				return findIndex(mid - 1, last, item); 
 			}
 
 			//if the invoices total is greater than the middle
-			return findIndex(first, mid - 1, total);
+			return findIndex(first, mid - 1, item);
 		}
+		
 		return -1; 
 	}
 
-	public void add(T item)
-	{
+	public void add(T item) {
+		//Adds an item to the invoicelist while maintaining a sort by total from highest to lowest
 
-		if(this.arr.length == this.size)
-		{
+		if(this.arr.length == this.size) {
 			this.increaseSize();
 		}
 		
-		double total = ((Invoice)item).getTotal();
-		int index = findIndex(0, this.arr.length, total);
+		int index = findIndex(0, this.arr.length, item);
 
 		for(int i = this.size; i > index; i--) {
 			arr[i] = arr[i-1];
@@ -91,10 +91,10 @@ public class InvoiceList<T> implements Iterable<T> {
 		this.size++;
 	}
 	
-	public void remove(int index)
-	{
-		if (index < 0 || index > this.size)
-		{
+	public void remove(int index) {
+		//Removes an element from a given index
+		
+		if (index < 0 || index > this.size) {
 			throw new ArrayIndexOutOfBoundsException("Enter a valid index");
 		}
 		
@@ -107,13 +107,13 @@ public class InvoiceList<T> implements Iterable<T> {
 
 	}
 
-	public String toString()
-	{
+	public String toString() {
 		String result = "[";
-		for(int i = 0; i < this.size; i++)
-		{
+		
+		for(int i = 0; i < this.size; i++) {
 			result += this.arr[i] + ", ";
 		}
+		
 		if(this.size() > 0) {
 			result = result.substring(0, result.length() - 2) + "]";
 		} else {
@@ -124,6 +124,8 @@ public class InvoiceList<T> implements Iterable<T> {
 	}
 
 	class InvoiceIterator implements Iterator<T> {
+		//Implements the iterator for the invoicelist class
+		
 		int current = 0;
 
 		public boolean hasNext() {
